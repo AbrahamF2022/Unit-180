@@ -18,30 +18,30 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-lg">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-green-600 rounded-lg flex items-center justify-center">
+          <Link to="/" className="flex items-center space-x-3">
+            <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xl">U180</span>
             </div>
-            <div className="hidden sm:block">
-              <div className="text-green-600 font-bold text-lg">UNIT 180</div>
-              <div className="text-xs text-gray-600">IGNITING THE INNOVATIVE</div>
+            <div>
+              <div className="text-green-500 font-bold text-xl">UNIT 180</div>
+              <div className="text-xs text-gray-500 uppercase tracking-wide">IGNITING THE INNOVATIVE</div>
             </div>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:bg-green-50 ${
+                className={`font-semibold text-sm uppercase tracking-wide transition-all duration-300 hover:text-green-500 ${
                   isActive(item.path)
-                    ? 'text-green-600 bg-green-50'
-                    : 'text-gray-700 hover:text-green-600'
+                    ? 'text-green-500'
+                    : 'text-gray-700'
                 }`}
               >
                 {item.name}
@@ -52,7 +52,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-gray-700 hover:text-green-600 transition-colors"
+            className="lg:hidden p-2 text-gray-700 hover:text-green-500 transition-colors"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -66,10 +66,10 @@ const Navigation = () => {
                 key={item.name}
                 to={item.path}
                 onClick={() => setIsOpen(false)}
-                className={`block px-4 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                className={`block px-4 py-3 font-semibold text-sm uppercase tracking-wide transition-all duration-300 ${
                   isActive(item.path)
-                    ? 'text-green-600 bg-green-50'
-                    : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
+                    ? 'text-green-500'
+                    : 'text-gray-700 hover:text-green-500'
                 }`}
               >
                 {item.name}
