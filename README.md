@@ -1,73 +1,71 @@
-# Welcome to your Lovable project
+# Unit 180 - Mentorship Website
 
-## Project info
+A modern, responsive website for Unit 180, a mentorship organization focused on guiding young men toward confidence, purpose, and leadership.
 
-**URL**: https://lovable.dev/projects/4f22d6fb-1004-4dfa-b52c-843c49960d8c
+## Features
 
-## How can I edit this code?
+- **Responsive Design**: Optimized for all devices from mobile to desktop
+- **Dynamic Animations**: Scroll-triggered animations and smooth transitions
+- **Form Integration**: Google Sheets integration for form submissions
+- **Modern UI**: Clean, professional design with glassmorphic elements
+- **Accessibility**: Built with accessibility best practices
 
-There are several ways of editing your application.
+## Setup
 
-**Use Lovable**
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/AbrahamF2022/Unit-180.git
+   cd Unit-180
+   ```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4f22d6fb-1004-4dfa-b52c-843c49960d8c) and start prompting.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-Changes made via Lovable will be committed automatically to this repo.
+3. **Environment Setup**
+   - Copy `env.example` to `.env.local`
+   - Update the Google Apps Script URL in `.env.local`:
+     ```
+     REACT_APP_GOOGLE_SCRIPT_URL=https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
+     ```
 
-**Use your preferred IDE**
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Google Sheets Integration
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+This project includes Google Sheets integration for form submissions. See `GOOGLE_SHEETS_SETUP.md` for detailed setup instructions.
 
-Follow these steps:
+## Technologies Used
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- Lucide React Icons
+- Google Apps Script
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Project Structure
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+├── components/     # Reusable UI components
+├── pages/         # Page components
+├── hooks/         # Custom React hooks
+├── lib/           # Utility functions and configurations
+└── ui/            # Shadcn/ui components
 ```
 
-**Edit a file directly in GitHub**
+## Contributing
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-**Use GitHub Codespaces**
+## License
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/4f22d6fb-1004-4dfa-b52c-843c49960d8c) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is licensed under the MIT License.

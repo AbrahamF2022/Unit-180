@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
-import { User, Mail, Phone, MapPin, Briefcase, GraduationCap, Heart, Send, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import { User, Mail, Phone, MapPin, Briefcase, GraduationCap, Heart, Send, CheckCircle, ArrowRight, ArrowLeft, Loader2 } from 'lucide-react';
+import { submitMentorForm } from '../lib/formSubmission';
 
 const BecomeMentor = () => {
   const [formData, setFormData] = useState({
@@ -26,6 +27,8 @@ const BecomeMentor = () => {
 
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -37,9 +40,23 @@ const BecomeMentor = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError(null);
+    
+    try {
+      const result = await submitMentorForm(formData);
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        setSubmitError(result.error || 'Failed to submit form. Please try again.');
+      }
+    } catch (error) {
+      setSubmitError('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 3));
@@ -77,7 +94,9 @@ const BecomeMentor = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
+      <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-md">
+        <Navigation />
+      </div>
       
       <div className="pt-24 pb-16">
         <div className="container mx-auto px-4">
@@ -122,6 +141,20 @@ const BecomeMentor = () => {
             </div>
 
             <form onSubmit={handleSubmit} className="bg-white border-2 border-gray-100 rounded-2xl shadow-lg overflow-hidden">
+              {submitError && (
+                <div className="bg-red-50 border-l-4 border-red-400 p-4 m-8">
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div className="ml-3">
+                      <p className="text-sm text-red-700">{submitError}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
               {/* Step 1: Personal Information */}
               {currentStep === 1 && (
                 <div className="p-8">
@@ -380,10 +413,20 @@ const BecomeMentor = () => {
                     </button>
                     <button
                       type="submit"
-                      className="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 transition-all duration-300 flex items-center"
+                      disabled={isSubmitting}
+                      className="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 transition-all duration-300 flex items-center disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Submit Application
-                      <Send className="ml-2" size={20} />
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 animate-spin" size={20} />
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          Submit Application
+                          <Send className="ml-2" size={20} />
+                        </>
+                      )}
                     </button>
                   </div>
                 </div>
