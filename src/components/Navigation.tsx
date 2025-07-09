@@ -18,17 +18,17 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+    <nav className="bg-green-500 shadow-lg">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">U180</span>
+            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+              <span className="text-green-500 font-bold text-lg">U180</span>
             </div>
             <div>
-              <div className="text-green-500 font-bold text-xl">UNIT 180</div>
-              <div className="text-xs text-gray-500 uppercase tracking-wide">IGNITING THE INNOVATIVE</div>
+              <div className="text-white font-bold text-lg">UNIT 180</div>
+              <div className="text-xs text-green-100 uppercase tracking-wide">IGNITING THE INNOVATIVE</div>
             </div>
           </Link>
 
@@ -38,10 +38,10 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`font-semibold text-sm uppercase tracking-wide transition-all duration-300 hover:text-green-500 ${
+                className={`font-bold text-sm uppercase tracking-wide transition-all duration-300 px-4 py-2 rounded ${
                   isActive(item.path)
-                    ? 'text-green-500'
-                    : 'text-gray-700'
+                    ? 'bg-white text-green-500'
+                    : 'text-white hover:bg-green-400'
                 }`}
               >
                 {item.name}
@@ -52,7 +52,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-gray-700 hover:text-green-500 transition-colors"
+            className="lg:hidden p-2 text-white hover:text-green-200 transition-colors"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -66,10 +66,10 @@ const Navigation = () => {
                 key={item.name}
                 to={item.path}
                 onClick={() => setIsOpen(false)}
-                className={`block px-4 py-3 font-semibold text-sm uppercase tracking-wide transition-all duration-300 ${
+                className={`block px-4 py-3 font-bold text-sm uppercase tracking-wide transition-all duration-300 rounded ${
                   isActive(item.path)
-                    ? 'text-green-500'
-                    : 'text-gray-700 hover:text-green-500'
+                    ? 'bg-white text-green-500'
+                    : 'text-white hover:bg-green-400'
                 }`}
               >
                 {item.name}
