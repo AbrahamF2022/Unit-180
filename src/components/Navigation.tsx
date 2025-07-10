@@ -35,7 +35,7 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`relative font-bold text-sm uppercase tracking-wider px-4 py-2 rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-white text-green-700 hover:text-green-900 ${isActive(item.path) ? 'font-extrabold' : ''}`}
+                className={`relative font-bold text-base uppercase tracking-wider px-4 py-2 rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-white text-green-700 hover:text-green-900 ${isActive(item.path) ? 'font-extrabold' : ''}`}
               >
                 <span className="relative z-10">{item.name}</span>
                 <span className="absolute left-0 bottom-1 w-full h-1 rounded bg-green-400 opacity-0 group-hover:opacity-100 transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left" />
@@ -59,7 +59,7 @@ const Navigation = () => {
                 key={item.name}
                 to={item.path}
                 onClick={() => setIsOpen(false)}
-                className={`block px-4 py-3 font-bold text-sm uppercase tracking-wider rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 text-green-700 hover:bg-green-100 transition-all duration-200`}
+                className={`block px-4 py-3 font-bold text-base uppercase tracking-wider rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 text-green-700 hover:bg-green-100 transition-all duration-200`}
               >
                 {item.name}
               </Link>
