@@ -1,5 +1,5 @@
 // Replace this URL with your Google Apps Script web app URL
-const GOOGLE_SCRIPT_URL = process.env.REACT_APP_GOOGLE_SCRIPT_URL || 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
 
 // Local proxy server
 const PROXY_SERVER = 'http://localhost:3001/api/submit-form';

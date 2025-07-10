@@ -14,7 +14,7 @@ const HeroSection = () => {
       {/* Animated Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-green-400/80 via-green-600/60 to-black/80 animate-gradient-x" />
       <div className="absolute inset-0 w-full h-full">
-        <img src="/images/Front Page image.png" alt="Mentorship group" className="w-full h-full object-cover object-center scale-105 blur-[1px]" />
+        <img src="images/Front Page image.png" alt="Mentorship group" className="w-full h-full object-cover object-center scale-105 blur-[1px]" />
         <div className="absolute inset-0 bg-black/60" />
       </div>
       <div className="relative z-10 container mx-auto px-4 py-24 flex flex-col items-center text-center text-white">

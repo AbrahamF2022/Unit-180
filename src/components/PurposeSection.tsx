@@ -25,7 +25,7 @@ const PurposeSection = () => {
         <div className="space-y-24">
           <div className="flex flex-col lg:flex-row items-center gap-12 animate-fade-in-up">
             <div className="flex-1">
-              <img src="/images/Image of kids.png" alt="Young men group" className="w-full rounded-2xl shadow-2xl object-cover aspect-[3/1]" />
+              <img src="images/Image of kids.png" alt="Young men group" className="w-full rounded-2xl shadow-2xl object-cover aspect-[3/1]" />
             </div>
             <div className="flex-1 text-center lg:text-left">
               <div className="bg-white/80 p-8 rounded-2xl shadow-xl">
@@ -46,12 +46,12 @@ const PurposeSection = () => {
               </div>
             </div>
             <div className="flex-1">
-              <img src="/images/picture of kids and mentor.png" alt="Graduation ceremony" className="w-full rounded-2xl shadow-2xl object-cover aspect-[3/1]" />
+              <img src="images/picture of kids and mentor.png" alt="Graduation ceremony" className="w-full rounded-2xl shadow-2xl object-cover aspect-[3/1]" />
             </div>
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-12 animate-fade-in-up delay-300">
             <div className="flex-1">
-              <img src="/images/Image of kids 2.png" alt="Mentorship meeting" className="w-full rounded-2xl shadow-2xl object-cover aspect-[3/1]" />
+              <img src="images/Image of kids 2.png" alt="Mentorship meeting" className="w-full rounded-2xl shadow-2xl object-cover aspect-[3/1]" />
             </div>
             <div className="flex-1 text-center lg:text-left">
               <div className="bg-white/80 p-8 rounded-2xl shadow-xl">
@@ -77,7 +77,7 @@ const PurposeSection = () => {
           <div 
             className="py-12 mb-8 bg-cover bg-center relative rounded-2xl shadow-xl border-4 border-green-400 flex flex-col items-center justify-center"
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/extra picture.png')`
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/extra picture.png')`
             }}
           >
             <h3 className="text-4xl font-extrabold text-green-400 mb-2 tracking-tight">THE FASTIDIOUS 5:</h3>

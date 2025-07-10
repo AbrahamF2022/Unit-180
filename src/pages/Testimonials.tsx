@@ -127,19 +127,20 @@ const Testimonials = () => {
               <div className="relative">
                 <div className="relative">
                   <div className="relative w-full aspect-w-16 aspect-h-9 bg-black">
+                    {/* Always use the original, uncompressed file for best clarity */}
                     <video
                       ref={videoRef}
-                      className="w-full h-full object-contain"
+                      className="w-full max-w-full max-h-[600px] object-contain"
                       controls
-                      poster="/images/placeholder.svg"
+                      poster="images/placeholder.svg"
                       onPlay={() => setIsPlaying(true)}
                       onPause={() => setIsPlaying(false)}
                       onError={(e) => console.error('Video error:', e)}
                       onLoadStart={() => console.log('Video loading started')}
                       onCanPlay={() => console.log('Video can play')}
                     >
-                      <source src="/images/B7E5B2C2-968F-4283-AFE8-35536F1989CF.mov" type="video/quicktime" />
-                      <source src="/images/testimonial-web.mp4" type="video/mp4" />
+                      <source src="images/B7E5B2C2-968F-4283-AFE8-35536F1989CF.mov" type="video/quicktime" />
+                      <source src="images/testimonial-web.mp4" type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
                     {/* Play overlay, only show if not playing */}

@@ -23,7 +23,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 lg:space-x-3">
-            <img src="/images/Logo unit180.png" alt="Unit 180 Logo" className="w-12 h-12 object-contain rounded bg-white shadow-lg p-1 ring-2 ring-green-400 ring-offset-2 ring-offset-white transition-all duration-300 hover:scale-105 hover:shadow-green-400/50" />
+            <img src="images/Logo unit180.png" alt="Unit 180 Logo" className="w-12 h-12 object-contain rounded bg-white shadow-lg p-1 ring-2 ring-green-400 ring-offset-2 ring-offset-white transition-all duration-300 hover:scale-105 hover:shadow-green-400/50" />
             <div className="leading-tight">
               <div className="text-green-700 font-extrabold text-lg lg:text-xl tracking-tight drop-shadow-md">UNIT 180</div>
               <div className="text-xs text-green-400 uppercase tracking-widest font-semibold">REWRITING THE NARRATIVE</div>
