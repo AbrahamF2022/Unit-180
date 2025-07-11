@@ -1,14 +1,15 @@
 
 import React, { useEffect, useState, useRef } from 'react';
+import { Eye, ShieldCheck, Target, TrendingUp, Users } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import { useInView } from '../hooks/use-in-view';
 
 const FASTIDIOUS_5 = [
-  { title: 'SELF-AWARENESS', desc: 'Greatness starts with knowing who you are.', icon: '🧠', color: 'from-green-400 to-green-600' },
-  { title: 'INTEGRITY', desc: 'Stand tall. Do what’s right—always.', icon: '🛡️', color: 'from-blue-400 to-blue-600' },
-  { title: 'DISCIPLINE', desc: 'Stay focused. Outwork the rest.', icon: '🎯', color: 'from-yellow-400 to-yellow-600' },
-  { title: 'PERSEVERANCE', desc: 'Rise above every obstacle.', icon: '💪', color: 'from-purple-400 to-purple-600' },
-  { title: 'BROTHERHOOD', desc: 'We lift as we climb.', icon: '🤝', color: 'from-pink-400 to-pink-600' },
+  { title: 'SELF-AWARENESS', desc: 'Greatness starts with knowing who you are.', icon: Eye, color: 'from-green-400 to-green-600' },
+  { title: 'INTEGRITY', desc: 'Stand tall. Do what’s right—always.', icon: ShieldCheck, color: 'from-blue-400 to-blue-600' },
+  { title: 'DISCIPLINE', desc: 'Stay focused. Outwork the rest.', icon: Target, color: 'from-yellow-400 to-yellow-600' },
+  { title: 'PERSEVERANCE', desc: 'Rise above every obstacle.', icon: TrendingUp, color: 'from-purple-400 to-purple-600' },
+  { title: 'BROTHERHOOD', desc: 'We lift as we climb.', icon: Users, color: 'from-pink-400 to-pink-600' },
 ];
 
 const TIMELINE = [
@@ -146,6 +147,13 @@ const Index = () => {
       </div>
       {/* Purpose & Mission Section: Glassmorphic, Modern, Visually Striking */}
       <section className="relative py-16 md:py-32 bg-gradient-to-br from-green-100 via-white to-green-50 animate-fade-in-up">
+        {/* Watermark background image */}
+        <img
+          src="images/Logo unit180.png"
+          alt="Purpose Watermark"
+          className="pointer-events-none select-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-15 w-[70vw] max-w-4xl z-0"
+          aria-hidden="true"
+        />
         <div className="max-w-6xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
           {/* Purpose Card */}
           <div className="relative bg-white/70 backdrop-blur-lg rounded-3xl shadow-2xl p-8 md:p-14 border-t-8 border-green-400 flex flex-col justify-start animate-fade-in-up group overflow-hidden">
@@ -312,13 +320,13 @@ const Index = () => {
           <p className="text-base md:text-lg lg:text-xl text-green-800 max-w-3xl mx-auto mb-6 md:mb-12 text-center font-semibold animate-fade-in-up delay-100 px-4">Our core values are the foundation of everything we do. They shape leaders, build brotherhood, and drive us to greatness.</p>
           
           {/* Improved Grid Layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-6 w-full max-w-6xl justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 w-full max-w-6xl justify-items-center">
             {FASTIDIOUS_5.map((item, idx) => {
               const isVisible = visibleTimelineItems.includes(idx + 10); // Offset to match scroll handler
               return (
                 <div
                   key={item.title}
-                  className={`fastidious-item flex flex-col items-center bg-white rounded-2xl md:rounded-3xl shadow-lg md:shadow-xl border border-green-100 p-4 md:p-6 lg:p-8 transition-all duration-700 hover:-translate-y-2 hover:shadow-xl group min-h-[280px] md:min-h-[320px] lg:min-h-[360px] relative overflow-hidden w-full max-w-xs sm:w-auto sm:max-w-none ${
+                  className={`fastidious-item flex flex-col items-center bg-white rounded-2xl md:rounded-3xl shadow-lg md:shadow-xl border border-green-100 p-4 md:p-6 lg:p-8 px-4 transition-all duration-700 hover:-translate-y-2 hover:shadow-xl group min-h-[280px] md:min-h-[320px] lg:min-h-[360px] relative overflow-hidden ${
                     isVisible ? 'animate-slide-in-from-bottom' : 'opacity-0 translate-y-20'
                   }`}
                   style={{ 
@@ -331,7 +339,7 @@ const Index = () => {
                 
                 {/* Icon container with enhanced styling */}
                 <div className="relative z-10 w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full flex items-center justify-center text-2xl md:text-3xl lg:text-4xl shadow-lg md:shadow-xl border-4 border-green-200 bg-gradient-to-br from-green-100 to-green-50 mb-4 md:mb-6 group-hover:bg-green-200 group-hover:scale-110 transition-all duration-300">
-                  {item.icon}
+                  <item.icon className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-green-700" />
                 </div>
                 
                 {/* Title with better spacing and larger on mobile */}
