@@ -320,13 +320,13 @@ const Index = () => {
           <p className="text-base md:text-lg lg:text-xl text-green-800 max-w-3xl mx-auto mb-6 md:mb-12 text-center font-semibold animate-fade-in-up delay-100 px-4">Our core values are the foundation of everything we do. They shape leaders, build brotherhood, and drive us to greatness.</p>
           
           {/* Improved Grid Layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 w-full max-w-6xl justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 w-full max-w-6xl justify-items-stretch">
             {FASTIDIOUS_5.map((item, idx) => {
               const isVisible = visibleTimelineItems.includes(idx + 10); // Offset to match scroll handler
               return (
                 <div
                   key={item.title}
-                  className={`fastidious-item flex flex-col items-center bg-white rounded-2xl md:rounded-3xl shadow-lg md:shadow-xl border border-green-100 p-4 md:p-6 lg:p-8 px-4 transition-all duration-700 hover:-translate-y-2 hover:shadow-xl group min-h-[280px] md:min-h-[320px] lg:min-h-[360px] relative overflow-hidden ${
+                  className={`fastidious-item flex flex-col items-center bg-white rounded-2xl md:rounded-3xl shadow-lg md:shadow-xl border border-green-100 p-4 md:p-6 lg:p-8 transition-all duration-700 hover:-translate-y-2 hover:shadow-xl group min-h-[280px] md:min-h-[320px] lg:min-h-[360px] relative overflow-hidden w-full ${
                     isVisible ? 'animate-slide-in-from-bottom' : 'opacity-0 translate-y-20'
                   }`}
                   style={{ 
