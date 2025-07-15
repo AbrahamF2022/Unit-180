@@ -13,6 +13,8 @@ const PurposeSection = () => {
 
   return (
     <div className="relative py-32 bg-gradient-to-br from-green-50 via-white to-green-100 overflow-hidden font-sans">
+      <div style={{position: 'relative', zIndex: 9999, color: 'red', fontWeight: 'bold'}}>DEBUG PURPOSE SECTION</div>
+      {/* Watermark Logo Background */}
       {/* Top SVG Divider */}
       <svg className="absolute top-0 left-0 w-full h-24 text-green-200" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fillOpacity="0.3" d="M0,160L60,170.7C120,181,240,203,360,197.3C480,192,600,160,720,133.3C840,107,960,85,1080,101.3C1200,117,1320,171,1380,197.3L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z" /></svg>
       <div className="container mx-auto px-4 relative z-10">
@@ -76,9 +78,6 @@ const PurposeSection = () => {
         <div className="text-center mb-16 animate-fade-in-up delay-500">
           <div 
             className="py-12 mb-8 bg-cover bg-center relative rounded-2xl shadow-xl border-4 border-green-400 flex flex-col items-center justify-center"
-            style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/extra picture.png')`
-            }}
           >
             <h3 className="text-4xl font-extrabold text-green-400 mb-2 tracking-tight">THE FASTIDIOUS 5:</h3>
             <h4 className="text-2xl font-bold text-white">OUR CORE VALUES</h4>

@@ -10,6 +10,7 @@ import JoinMentee from "./pages/JoinMentee";
 import BecomeMentor from "./pages/BecomeMentor";
 import Testimonials from "./pages/Testimonials";
 import NotFound from "./pages/NotFound";
+import Gallery from "./pages/Gallery";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/join" element={<JoinMentee />} />
           <Route path="/mentor" element={<BecomeMentor />} />
           <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/gallery" element={<Gallery />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -22,7 +22,7 @@ const TIMELINE = [
 
 const JOURNEY_IMAGES = [
   'images/picture of kids and mentor.png',
-  'images/Image of kids.jpeg', // Mentorship step (idx 1)
+  'images/Image of kids.jpg', // Mentorship step (idx 1)
   'images/picture of kids 4.jpg', // Growth step (idx 2)
   'images/image of mentor and kid.png',
   'images/picture.png',
@@ -148,12 +148,12 @@ const Index = () => {
       {/* Purpose & Mission Section: Glassmorphic, Modern, Visually Striking */}
       <section className="relative py-16 md:py-32 bg-gradient-to-br from-green-100 via-white to-green-50 animate-fade-in-up">
         {/* Watermark background image */}
-        <img
+        {/* <img
           src="images/Logo unit180.png"
           alt="Purpose Watermark"
           className="pointer-events-none select-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-15 w-[70vw] max-w-4xl z-0"
           aria-hidden="true"
-        />
+        /> */}
         <div className="max-w-6xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
           {/* Purpose Card */}
           <div className="relative bg-white/70 backdrop-blur-lg rounded-3xl shadow-2xl p-8 md:p-14 border-t-8 border-green-400 flex flex-col justify-start animate-fade-in-up group overflow-hidden">
@@ -236,10 +236,10 @@ const Index = () => {
                             isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-20'
                           }`} style={{ borderLeft: '6px solid #22c55e', background: 'linear-gradient(135deg, #f0fdf4 60%, #bbf7d0 100%)' }}>
                             {/* Subtle pattern/gradient */}
-                            <div className="absolute inset-0 bg-[url('images/extra%20picture.png')] bg-cover bg-center opacity-5 pointer-events-none" />
+                            {/* <div className="absolute inset-0 bg-[url('images/extra%20picture.png')] bg-cover bg-center opacity-5 pointer-events-none" /> */}
                             <img src={
                               idx === 1
-                                ? 'images/Image of kids.jpeg'
+                                ? 'images/Image of kids.jpg'
                                 : idx === 2
                                   ? 'images/picture of kids 4.jpg'
                                   : JOURNEY_IMAGES[idx % JOURNEY_IMAGES.length]
@@ -283,10 +283,10 @@ const Index = () => {
                             isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-20'
                           }`} style={{ borderRight: '6px solid #22c55e', background: 'linear-gradient(135deg, #f0fdf4 60%, #bbf7d0 100%)' }}>
                             {/* Subtle pattern/gradient */}
-                            <div className="absolute inset-0 bg-[url('images/extra%20picture.png')] bg-cover bg-center opacity-5 pointer-events-none" />
+                            {/* <div className="absolute inset-0 bg-[url('images/extra%20picture.png')] bg-cover bg-center opacity-5 pointer-events-none" /> */}
                             <img src={
                               idx === 1
-                                ? 'images/Image of kids.jpeg'
+                                ? 'images/Image of kids.jpg'
                                 : idx === 2
                                   ? 'images/picture of kids 4.jpg'
                                   : JOURNEY_IMAGES[idx % JOURNEY_IMAGES.length]
