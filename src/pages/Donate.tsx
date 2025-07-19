@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { Heart, DollarSign, ArrowRight, Check } from 'lucide-react';
+import { Heart, DollarSign, ArrowRight, Check, CreditCard, ExternalLink } from 'lucide-react';
 
 const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(250);
@@ -10,6 +10,9 @@ const Donate = () => {
   const [donationType, setDonationType] = useState<'one-time' | 'monthly'>('one-time');
 
   const predefinedAmounts = [100, 250, 500, 1000];
+
+  // Replace with your actual PayPal.me username
+  const paypalMeUsername = 'your-paypal-username';
 
   const handleAmountSelect = (amount: number) => {
     setSelectedAmount(amount);
@@ -23,6 +26,21 @@ const Donate = () => {
 
   const getCurrentAmount = () => {
     return selectedAmount || parseInt(customAmount) || 0;
+  };
+
+  const handlePayPalDonation = () => {
+    const amount = getCurrentAmount();
+    if (amount > 0) {
+      // PayPal.me URL with amount
+      const paypalUrl = `https://paypal.me/${paypalMeUsername}/${amount}`;
+      window.open(paypalUrl, '_blank');
+    }
+  };
+
+  const handleCustomPayPalDonation = () => {
+    // PayPal.me URL without amount (user enters manually)
+    const paypalUrl = `https://paypal.me/${paypalMeUsername}`;
+    window.open(paypalUrl, '_blank');
   };
 
   return (
@@ -155,16 +173,48 @@ const Donate = () => {
                       />
                     </div>
                   </div>
-                  {/* Donate Button */}
-                  <button
-                    disabled={getCurrentAmount() === 0}
-                    className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-full font-extrabold text-xl hover:bg-green-600 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 shadow-xl flex items-center justify-center group focus:outline-none focus:ring-2 focus:ring-green-400"
-                  >
-                    Donate ${getCurrentAmount()} {donationType === 'monthly' ? '/month' : ''}
-                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={24} />
-                  </button>
+                  
+                  {/* PayPal Donation Buttons */}
+                  <div className="space-y-4">
+                    {/* Main PayPal Button */}
+                    {getCurrentAmount() > 0 && (
+                      <button
+                        onClick={handlePayPalDonation}
+                        className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-4 rounded-full font-extrabold text-xl hover:bg-blue-600 transition-all duration-200 hover:scale-105 shadow-xl flex items-center justify-center group focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      >
+                        <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal" className="h-6 mr-2" />
+                        Donate ${getCurrentAmount()} {donationType === 'monthly' ? '/month' : ''}
+                        <ExternalLink className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                      </button>
+                    )}
+
+                    {/* Custom Amount PayPal Button */}
+                    <button
+                      onClick={handleCustomPayPalDonation}
+                      className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-full font-extrabold text-xl hover:bg-green-600 transition-all duration-200 hover:scale-105 shadow-xl flex items-center justify-center group focus:outline-none focus:ring-2 focus:ring-green-400"
+                    >
+                      <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal" className="h-6 mr-2" />
+                      Donate Custom Amount
+                      <ExternalLink className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                    </button>
+                    
+                    {/* Alternative Payment Methods */}
+                    <div className="text-center">
+                      <div className="flex items-center justify-center space-x-2 text-sm text-gray-600 mb-2">
+                        <CreditCard className="w-4 h-4" />
+                        <span>Secure payment through PayPal</span>
+                      </div>
+                      <div className="flex items-center justify-center space-x-4 text-xs text-gray-500">
+                        <span>Visa</span>
+                        <span>Mastercard</span>
+                        <span>American Express</span>
+                        <span>PayPal</span>
+                      </div>
+                    </div>
+                  </div>
+
                   {/* Security Note */}
-                  <div className="mt-4 flex items-center justify-center text-sm text-green-700">
+                  <div className="mt-6 flex items-center justify-center text-sm text-green-700">
                     <Check className="mr-2" size={16} />
                     Secure donation processing
                   </div>
@@ -174,6 +224,7 @@ const Donate = () => {
           </div>
         </div>
       </div>
+
       {/* Animations */}
       <style>{`
         .animate-fade-in-up {
