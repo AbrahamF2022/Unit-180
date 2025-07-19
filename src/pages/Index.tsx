@@ -142,126 +142,174 @@ const Index = () => {
           </div>
         </div>
       </section>
-      {/* Journey Section: Premium Timeline with Card Borders and Enhanced Text */}
-      <section className="relative py-16 md:py-32 bg-gradient-to-br from-green-50 via-white to-green-100 overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 md:px-6 relative z-10">
-          <h3 className="text-3xl md:text-5xl font-extrabold text-green-700 mb-8 md:mb-16 text-center tracking-tight animate-slide-in-from-top">The Journey</h3>
+      {/* Enhanced Journey Section: Premium Timeline with Progressive Reveal */}
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-green-50 via-white to-emerald-50 overflow-hidden">
+        {/* Enhanced Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-32 left-16 w-20 h-20 bg-green-300/20 rounded-full blur-2xl animate-float" />
+          <div className="absolute bottom-40 right-20 w-32 h-32 bg-emerald-400/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-2/3 left-10 w-16 h-16 bg-teal-300/25 rounded-full blur-xl animate-float" style={{ animationDelay: '1s' }} />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
+          {/* Enhanced Header */}
+          <div className="text-center mb-16 md:mb-24">
+            <h3 className="text-4xl md:text-6xl lg:text-7xl font-black text-transparent bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text mb-6 animate-slide-in-from-top">
+              Your Journey
+            </h3>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8 animate-fade-in-up delay-200">
+              Follow the path from joining our brotherhood to becoming a leader who transforms communities
+            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-emerald-500 mx-auto rounded-full animate-fade-in-up delay-400" />
+          </div>
+
           <div className="relative">
-            {/* Faint green highlight behind timeline */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-16 bg-gradient-to-b from-green-100 via-green-200 to-green-100 opacity-60 -translate-x-1/2 z-0 rounded-full animate-pulse-slow" />
-            {/* Vertical timeline line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-2 bg-gradient-to-b from-green-200 via-green-400 to-green-100 rounded-full -translate-x-1/2 z-10 animate-timeline-grow" />
-            <div className="flex flex-col gap-12 md:gap-24 relative z-20">
+            {/* Enhanced Timeline Design */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-20 bg-gradient-to-b from-green-100 via-green-200 to-green-100 opacity-40 -translate-x-1/2 z-0 rounded-full" />
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-green-400 via-emerald-500 to-teal-400 rounded-full -translate-x-1/2 z-10 shadow-lg" />
+            
+            {/* Progressive Timeline Line Fill */}
+            <div className="hidden md:block absolute left-1/2 top-0 w-1 bg-gradient-to-b from-green-500 to-emerald-600 rounded-full -translate-x-1/2 z-20 transition-all duration-1000 shadow-green-400/50" 
+                 style={{ height: `${Math.min(100, (visibleTimelineItems.length / TIMELINE.length) * 100)}%` }} />
+
+            <div className="flex flex-col gap-16 md:gap-28 relative z-20">
               {TIMELINE.map((item, idx) => {
                 const isLeft = idx % 2 === 0;
                 const isVisible = visibleTimelineItems.includes(idx);
                 return (
                   <div
                     key={item.step}
-                    className={`timeline-item relative flex flex-col items-center md:flex-row min-h-[280px] md:min-h-[320px] group transition-all duration-700 ${
+                    className={`timeline-item relative flex flex-col items-center md:flex-row min-h-[320px] md:min-h-[380px] group transition-all duration-1000 ${
                       isVisible 
                         ? `animate-slide-in-from-${isLeft ? 'left' : 'right'}` 
                         : 'opacity-0 translate-x-0'
                     }`}
                     style={{ 
-                      animationDelay: isVisible ? '0.1s' : '0s',
+                      animationDelay: isVisible ? `${idx * 0.2}s` : '0s',
                       transform: isVisible ? 'none' : `translateX(${isLeft ? '-100px' : '100px'})`
                     }}
                   >
-                    {/* Timeline connector for all but first step */}
-                    {idx > 0 && (
-                      <div className="hidden md:block absolute left-1/2 top-0 w-2 h-1/2 bg-green-200 -translate-x-1/2 z-0" />
-                    )}
-                    
-                    {/* Mobile: Timeline dot at top */}
-                    <div className="relative z-30 flex flex-col items-center mb-6 md:mb-0 md:hidden">
-                      <div className={`w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-2xl font-black text-white shadow-2xl border-4 border-white ring-4 ring-green-200 group-hover:ring-green-400 transition-all duration-500 ${
-                        isVisible ? 'animate-bounce-slow' : 'opacity-0 scale-0'
-                      }`} style={{ boxShadow: '0 0 32px 0 #bbf7d0' }}>{idx + 1}</div>
-                      <div className={`w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-xl mt-2 shadow-xl border-4 border-green-300 transition-all duration-500 ${
+                    {/* Mobile: Enhanced Timeline dot */}
+                    <div className="relative z-30 flex flex-col items-center mb-8 md:mb-0 md:hidden">
+                      <div className={`w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-2xl font-black text-white shadow-2xl border-4 border-white ring-8 ring-green-200/50 group-hover:ring-green-400/50 transition-all duration-700 ${
+                        isVisible ? 'animate-bounce-slow scale-100' : 'opacity-0 scale-0'
+                      }`} style={{ boxShadow: '0 0 40px 0 rgba(34, 197, 94, 0.3)' }}>
+                        {idx + 1}
+                      </div>
+                      <div className={`w-14 h-14 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-2xl mt-4 shadow-xl border-4 border-green-300 transition-all duration-700 ${
                         isVisible ? 'animate-float' : 'opacity-0 scale-0'
                       }`}>
                         {item.icon}
                       </div>
                     </div>
                     
-                    {/* Left or right content */}
-                    <div className={`flex-1 flex w-full ${isLeft ? 'justify-end md:pr-8' : 'justify-start md:pl-8'}`}> 
+                    {/* Enhanced Content Cards */}
+                    <div className={`flex-1 flex w-full ${isLeft ? 'justify-end md:pr-12' : 'justify-start md:pl-12'}`}> 
                       {isLeft ? (
-                        <div className="w-full max-w-md">
-                          <div className={`relative bg-white/70 backdrop-blur-lg rounded-3xl shadow-2xl border-t-8 border-green-400 p-6 md:p-10 lg:p-12 flex flex-col items-center md:items-end group-hover:shadow-green-200/40 transition-all duration-700 overflow-hidden ${
+                        <div className="w-full max-w-lg">
+                          <div className={`relative bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border-t-8 border-green-400 p-8 md:p-12 flex flex-col items-center md:items-end group-hover:shadow-green-300/40 group-hover:bg-white/90 transition-all duration-700 overflow-hidden transform group-hover:-translate-y-2 group-hover:scale-105 ${
                             isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-20'
-                          }`} style={{ borderLeft: '6px solid #22c55e', background: 'linear-gradient(135deg, #f0fdf4 60%, #bbf7d0 100%)' }}>
-                            {/* Subtle pattern/gradient */}
-                            {/* <div className="absolute inset-0 bg-[url('images/extra%20picture.png')] bg-cover bg-center opacity-5 pointer-events-none" /> */}
+                          }`} style={{ 
+                            borderLeft: '6px solid #22c55e', 
+                            background: 'linear-gradient(135deg, rgba(240, 253, 244, 0.9) 60%, rgba(187, 247, 208, 0.8) 100%)',
+                            boxShadow: isVisible ? '0 25px 50px -12px rgba(34, 197, 94, 0.25)' : 'none'
+                          }}>
+                            
                             <img src={
                               idx === 1
                                 ? 'images/Image of kids.jpg'
                                 : idx === 2
                                   ? 'images/picture of kids 4.jpg'
                                   : JOURNEY_IMAGES[idx % JOURNEY_IMAGES.length]
-                            } alt={item.step + ' photo'} className="w-full max-w-[32rem] h-48 md:h-72 lg:h-96 object-cover object-center rounded-3xl shadow-2xl border-4 md:border-8 border-green-300 mb-6 md:mb-8 transition-all duration-500 group-hover:-rotate-2 group-hover:scale-105 ring-4 ring-green-200/60 animate-float" style={{ boxShadow: '0 8px 48px 0 #bbf7d0, 0 2px 16px 0 #22c55e22' }} />
-                            <div className="flex items-center mb-2">
-                              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-xl md:text-2xl font-black text-white shadow-xl border-4 border-white mr-3 animate-bounce-slow">{idx + 1}</div>
-                              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-green-200 to-green-400 flex items-center justify-center text-lg md:text-2xl shadow-lg border-2 border-green-200 animate-pulse">
+                            } alt={item.step + ' photo'} className="w-full max-w-md h-48 md:h-64 lg:h-80 object-cover object-center rounded-2xl shadow-xl border-4 border-green-300 mb-8 transition-all duration-700 group-hover:-rotate-1 group-hover:scale-105 ring-4 ring-green-200/50 group-hover:ring-green-300/70" 
+                            style={{ boxShadow: '0 20px 40px -8px rgba(34, 197, 94, 0.3)' }} />
+                            
+                            <div className="flex items-center gap-4 mb-6">
+                              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-2xl font-black text-white shadow-xl border-4 border-white group-hover:scale-110 transition-all duration-500">
+                                {idx + 1}
+                              </div>
+                              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-200 to-emerald-300 flex items-center justify-center text-2xl shadow-lg border-2 border-green-300 group-hover:rotate-12 transition-all duration-500">
                                 {item.icon}
                               </div>
                             </div>
-                            <div className="flex flex-col items-center w-full mb-4">
-                              <div className="text-3xl md:text-4xl lg:text-5xl font-black text-green-700 text-center tracking-tight leading-tight">{item.step}</div>
-                              <div className="w-24 h-2 rounded-full mt-2 bg-gradient-to-r from-green-400 to-green-600" />
+                            
+                            <div className="flex flex-col items-center w-full mb-6">
+                              <div className="text-3xl md:text-4xl lg:text-5xl font-black text-green-700 text-center tracking-tight leading-tight group-hover:text-green-600 transition-colors duration-500">
+                                {item.step}
+                              </div>
+                              <div className="w-32 h-2 rounded-full mt-3 bg-gradient-to-r from-green-400 to-emerald-500 group-hover:from-green-500 group-hover:to-emerald-600 transition-all duration-500" />
                             </div>
-                            <div className="text-xl md:text-2xl lg:text-3xl text-gray-700 max-w-md text-center font-medium leading-relaxed mb-6">{item.desc}</div>
+                            
+                            <div className="text-lg md:text-xl lg:text-2xl text-gray-700 max-w-md text-center font-medium leading-relaxed group-hover:text-gray-800 transition-colors duration-500">
+                              {item.desc}
+                            </div>
                           </div>
                         </div>
-                      ) : <div className="hidden md:block" style={{ minWidth: '1.5rem' }} />}
+                      ) : <div className="hidden md:block" style={{ minWidth: '3rem' }} />}
                     </div>
                     
-                    {/* Desktop: Timeline dot/step badge */}
+                    {/* Enhanced Desktop Timeline Node */}
                     <div className="relative z-30 flex flex-col items-center hidden md:flex">
-                      <div className={`w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-3xl font-black text-white shadow-2xl border-4 border-white ring-4 ring-green-200 group-hover:ring-green-400 transition-all duration-500 ${
-                        isVisible ? 'animate-bounce-slow' : 'opacity-0 scale-0'
-                      }`} style={{ boxShadow: '0 0 32px 0 #bbf7d0' }}>{idx + 1}</div>
-                      <div className={`w-3 h-24 bg-green-200 rounded-full transition-all duration-700 ${
-                        isVisible ? 'animate-pulse-slow' : 'opacity-0'
+                      <div className={`w-24 h-24 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-3xl font-black text-white shadow-2xl border-6 border-white ring-8 ring-green-200/50 group-hover:ring-green-400/70 group-hover:scale-125 transition-all duration-700 ${
+                        isVisible ? 'animate-bounce-slow scale-100' : 'opacity-0 scale-0'
+                      }`} style={{ boxShadow: '0 0 50px 0 rgba(34, 197, 94, 0.4)' }}>
+                        {idx + 1}
+                      </div>
+                      
+                      <div className={`w-4 h-32 bg-gradient-to-b from-green-300 to-emerald-400 rounded-full my-4 transition-all duration-1000 ${
+                        isVisible ? 'animate-pulse-slow opacity-70' : 'opacity-0'
                       }`} />
-                      <div className={`w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-3xl mt-4 shadow-xl border-4 border-green-300 transition-all duration-500 ${
+                      
+                      <div className={`w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-3xl shadow-xl border-4 border-green-300 group-hover:rotate-12 group-hover:scale-110 transition-all duration-700 ${
                         isVisible ? 'animate-float' : 'opacity-0 scale-0'
                       }`}>
                         {item.icon}
                       </div>
                     </div>
                     
-                    {/* Right or left content */}
-                    <div className={`flex-1 flex w-full ${!isLeft ? 'justify-start md:pl-8' : 'justify-end md:pr-8'}`}>
+                    {/* Right content (mirror of left) */}
+                    <div className={`flex-1 flex w-full ${!isLeft ? 'justify-start md:pl-12' : 'justify-end md:pr-12'}`}>
                       {!isLeft ? (
-                        <div className="w-full max-w-md">
-                          <div className={`relative bg-white/70 backdrop-blur-lg rounded-3xl shadow-2xl border-t-8 border-green-400 p-6 md:p-10 lg:p-12 flex flex-col items-center md:items-start group-hover:shadow-green-200/40 transition-all duration-700 overflow-hidden ${
+                        <div className="w-full max-w-lg">
+                          <div className={`relative bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border-t-8 border-green-400 p-8 md:p-12 flex flex-col items-center md:items-start group-hover:shadow-green-300/40 group-hover:bg-white/90 transition-all duration-700 overflow-hidden transform group-hover:-translate-y-2 group-hover:scale-105 ${
                             isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-20'
-                          }`} style={{ borderRight: '6px solid #22c55e', background: 'linear-gradient(135deg, #f0fdf4 60%, #bbf7d0 100%)' }}>
-                            {/* Subtle pattern/gradient */}
-                            {/* <div className="absolute inset-0 bg-[url('images/extra%20picture.png')] bg-cover bg-center opacity-5 pointer-events-none" /> */}
+                          }`} style={{ 
+                            borderRight: '6px solid #22c55e', 
+                            background: 'linear-gradient(135deg, rgba(240, 253, 244, 0.9) 60%, rgba(187, 247, 208, 0.8) 100%)',
+                            boxShadow: isVisible ? '0 25px 50px -12px rgba(34, 197, 94, 0.25)' : 'none'
+                          }}>
+                            
                             <img src={
                               idx === 1
                                 ? 'images/Image of kids.jpg'
                                 : idx === 2
                                   ? 'images/picture of kids 4.jpg'
                                   : JOURNEY_IMAGES[idx % JOURNEY_IMAGES.length]
-                            } alt={item.step + ' photo'} className="w-full max-w-[32rem] h-48 md:h-72 lg:h-96 object-cover object-center rounded-3xl shadow-2xl border-4 md:border-8 border-green-300 mb-6 md:mb-8 transition-all duration-500 group-hover:rotate-2 group-hover:scale-105 ring-4 ring-green-200/60 animate-float" style={{ boxShadow: '0 8px 48px 0 #bbf7d0, 0 2px 16px 0 #22c55e22' }} />
-                            <div className="flex items-center mb-2">
-                              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-xl md:text-2xl font-black text-white shadow-xl border-4 border-white mr-3 animate-bounce-slow">{idx + 1}</div>
-                              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-green-200 to-green-400 flex items-center justify-center text-lg md:text-2xl shadow-lg border-2 border-green-200 animate-pulse">
+                            } alt={item.step + ' photo'} className="w-full max-w-md h-48 md:h-64 lg:h-80 object-cover object-center rounded-2xl shadow-xl border-4 border-green-300 mb-8 transition-all duration-700 group-hover:rotate-1 group-hover:scale-105 ring-4 ring-green-200/50 group-hover:ring-green-300/70" 
+                            style={{ boxShadow: '0 20px 40px -8px rgba(34, 197, 94, 0.3)' }} />
+                            
+                            <div className="flex items-center gap-4 mb-6">
+                              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-2xl font-black text-white shadow-xl border-4 border-white group-hover:scale-110 transition-all duration-500">
+                                {idx + 1}
+                              </div>
+                              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-200 to-emerald-300 flex items-center justify-center text-2xl shadow-lg border-2 border-green-300 group-hover:rotate-12 transition-all duration-500">
                                 {item.icon}
                               </div>
                             </div>
-                            <div className="flex flex-col items-center w-full mb-4">
-                              <div className="text-3xl md:text-4xl lg:text-5xl font-black text-green-700 text-center tracking-tight leading-tight">{item.step}</div>
-                              <div className="w-24 h-2 rounded-full mt-2 bg-gradient-to-r from-green-400 to-green-600" />
+                            
+                            <div className="flex flex-col items-center w-full mb-6">
+                              <div className="text-3xl md:text-4xl lg:text-5xl font-black text-green-700 text-center tracking-tight leading-tight group-hover:text-green-600 transition-colors duration-500">
+                                {item.step}
+                              </div>
+                              <div className="w-32 h-2 rounded-full mt-3 bg-gradient-to-r from-green-400 to-emerald-500 group-hover:from-green-500 group-hover:to-emerald-600 transition-all duration-500" />
                             </div>
-                            <div className="text-xl md:text-2xl lg:text-3xl text-gray-700 max-w-md text-center font-medium leading-relaxed mb-6">{item.desc}</div>
+                            
+                            <div className="text-lg md:text-xl lg:text-2xl text-gray-700 max-w-md text-center font-medium leading-relaxed group-hover:text-gray-800 transition-colors duration-500">
+                              {item.desc}
+                            </div>
                           </div>
                         </div>
-                      ) : <div className="hidden md:block" style={{ minWidth: '1.5rem' }} />}
+                      ) : <div className="hidden md:block" style={{ minWidth: '3rem' }} />}
                     </div>
                   </div>
                 );
