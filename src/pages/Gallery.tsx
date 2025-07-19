@@ -6,8 +6,6 @@ const images = [
   { src: 'images/IMG_8394.jpg', alt: 'Mentorship moment 2', caption: 'Celebrating Success', description: 'Recognizing achievements and milestones together' },
   { src: 'images/IMG_8395.jpg', alt: 'Mentorship moment 3', caption: 'Growing Together', description: 'Learning and developing side by side' },
   { src: 'images/c.png', alt: 'Mentorship event', caption: 'Community Impact', description: 'Making a difference in our community' },
-  { src: 'images/changingimage1.JPEG', alt: 'Group activity', caption: 'Team Spirit', description: 'Working together towards common goals' },
-  { src: 'images/changingimage2.JPEG', alt: 'Leadership development', caption: 'Future Leaders', description: 'Developing the next generation of leaders' },
 ];
 
 const Gallery = () => {
