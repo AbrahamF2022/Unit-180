@@ -9,21 +9,18 @@ const HeroSection = () => {
     { src: 'images/changingimage2.JPEG', position: 'center 35%' },
     { src: 'images/changingimage3.JPG', position: 'center 45%' },
     { src: 'images/changingimage4.JPG', position: 'center 40%' },
-    { src: 'images/changingimage5.JPG', position: 'center 35%' },
-    { src: 'images/changingimage6.JPG', position: 'center 40%' }
+    { src: 'images/changingimage5.JPG', position: 'center 35%' }
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    console.log('Slideshow started, current index:', currentImageIndex);
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => {
         const newIndex = (prevIndex + 1) % images.length;
-        console.log('Changing from index', prevIndex, 'to', newIndex);
         return newIndex;
       });
-    }, 2000); // Faster for testing - 2 seconds
+    }, 4000); // Changed to 4 seconds for better viewing time
 
     return () => clearInterval(interval);
   }, [images.length]);
@@ -39,11 +36,6 @@ const HeroSection = () => {
       {/* Lighter Animated Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-green-400/30 via-green-600/20 to-black/40 animate-gradient-x" />
       
-      {/* Debug Display */}
-      <div className="absolute top-4 left-4 z-30 bg-black/70 text-white p-2 rounded text-sm">
-        Current Image: {currentImageIndex + 1} / {images.length}
-      </div>
-      
       {/* Slideshow Background */}
       <div className="absolute inset-0 w-full h-full">
         {images.map((image, index) => (
@@ -58,31 +50,10 @@ const HeroSection = () => {
               objectPosition: image.position, // Individual positioning for each image
               transform: 'scale(1.05)', // Reduced scale for better fitting
             }}
-            onLoad={() => console.log(`Image ${index + 1} loaded:`, image.src)}
-            onError={() => console.error(`Failed to load image ${index + 1}:`, image.src)}
           />
         ))}
         {/* Much lighter overlay for better text readability */}
         <div className="absolute inset-0 bg-black/30" />
-      </div>
-
-      {/* Slideshow Indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => {
-              console.log('Manual slide change to:', index);
-              setCurrentImageIndex(index);
-            }}
-            className={`w-4 h-4 rounded-full transition-all duration-300 border-2 border-white ${
-              index === currentImageIndex 
-                ? 'bg-white scale-125' 
-                : 'bg-transparent hover:bg-white/50'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-24 flex flex-col items-center text-center text-white">
