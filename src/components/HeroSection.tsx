@@ -1,8 +1,33 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
+  const images = [
+    'images/Front Page image.png',
+    'images/changingimage1.JPEG',
+    'images/changingimage2.JPEG',
+    'images/changingimage3.JPG',
+    'images/changingimage4.JPG',
+    'images/changingimage5.JPG',
+    'images/changingimage6.JPG'
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    console.log('Slideshow started, current index:', currentImageIndex);
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => {
+        const newIndex = (prevIndex + 1) % images.length;
+        console.log('Changing from index', prevIndex, 'to', newIndex);
+        return newIndex;
+      });
+    }, 2000); // Faster for testing - 2 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <div 
       className="relative min-h-[80vh] flex items-center justify-center overflow-hidden font-sans"
@@ -13,10 +38,48 @@ const HeroSection = () => {
       </svg>
       {/* Animated Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-green-400/80 via-green-600/60 to-black/80 animate-gradient-x" />
+      
+      {/* Debug Display */}
+      <div className="absolute top-4 left-4 z-30 bg-black/70 text-white p-2 rounded text-sm">
+        Current Image: {currentImageIndex + 1} / {images.length}
+      </div>
+      
+      {/* Slideshow Background */}
       <div className="absolute inset-0 w-full h-full">
-        <img src="images/Front Page image.png" alt="Mentorship group" className="w-full h-full object-cover object-center scale-105 blur-[1px]" />
+        {images.map((image, index) => (
+          <img 
+            key={index}
+            src={image} 
+            alt={`Mentorship slideshow ${index + 1}`} 
+            className={`absolute inset-0 w-full h-full object-cover object-center scale-105 blur-[1px] transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+            onLoad={() => console.log(`Image ${index + 1} loaded:`, image)}
+            onError={() => console.error(`Failed to load image ${index + 1}:`, image)}
+          />
+        ))}
         <div className="absolute inset-0 bg-black/60" />
       </div>
+
+      {/* Slideshow Indicators */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => {
+              console.log('Manual slide change to:', index);
+              setCurrentImageIndex(index);
+            }}
+            className={`w-4 h-4 rounded-full transition-all duration-300 border-2 border-white ${
+              index === currentImageIndex 
+                ? 'bg-white scale-125' 
+                : 'bg-transparent hover:bg-white/50'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+
       <div className="relative z-10 container mx-auto px-4 py-24 flex flex-col items-center text-center text-white">
         <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black leading-tight mb-8 drop-shadow-xl animate-fade-in-up">
           <span className="block text-white">GROW</span>

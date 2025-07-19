@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Eye, ShieldCheck, Target, TrendingUp, Users } from 'lucide-react';
 import Navigation from '../components/Navigation';
+import HeroSection from '../components/HeroSection';
 import { useInView } from '../hooks/use-in-view';
 
 const FASTIDIOUS_5 = [
@@ -85,66 +86,22 @@ const Index = () => {
 
   return (
     <>
+      {/* Loading Screen */}
+      {loading && (
+        <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-green-500"></div>
+        </div>
+      )}
+
       <div className="relative min-h-screen font-sans bg-black">
         {/* Fixed Nav Bar */}
         <div className="sticky top-0 z-40">
       <Navigation />
       </div>
-      {/* Full-bleed Hero Section: Vibrant Image, Popping Text, Light Nav */}
-      <div className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-black">
-        <img src="images/Front Page image.png" alt="Mentorship group" className="absolute inset-0 w-full h-full object-cover z-0 fade-in-hero-image" style={{ objectPosition: 'center 0%', filter: 'saturate(1.5) contrast(1.15) brightness(1.05)' }} />
-        <style>{`
-          .fade-in-hero-image {
-            opacity: 0;
-            filter: brightness(0.3) contrast(0.8) saturate(0.5);
-            animation: fadeInHero 4.5s cubic-bezier(.23,1.01,.32,1) forwards;
-          }
-          @keyframes fadeInHero {
-            0% { 
-              opacity: 0; 
-              filter: brightness(0.1) contrast(0.5) saturate(0.3);
-            }
-            30% { 
-              opacity: 0.3; 
-              filter: brightness(0.4) contrast(0.7) saturate(0.6);
-            }
-            60% { 
-              opacity: 0.7; 
-              filter: brightness(0.8) contrast(0.9) saturate(0.9);
-            }
-            100% { 
-              opacity: 1; 
-              filter: brightness(1.05) contrast(1.15) saturate(1.5);
-            }
-          }
-        `}</style>
-        {/* Very subtle overlay for readability, but keep image vibrant */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-black/10 to-green-100/10 z-10" />
-        <div className="relative z-30 flex flex-col items-center md:items-start justify-center w-full px-4 md:px-24 py-16 md:py-32 min-h-[70vh] text-center md:text-left">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 md:mb-6 tracking-tight" style={{ textShadow: '0 4px 24px rgba(0,0,0,0.45), 0 1px 0 #fff' }}>
-            <span className="block">GROW</span>
-            <span className="block text-green-600">LEAD</span>
-            <span className="block">GIVE BACK</span>
-          </h1>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-medium mb-6 md:mb-10 max-w-2xl md:mx-0 mx-auto px-2" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.35)' }}>
-            Guiding young men toward confidence, purpose, and leadership through mentorship rooted in self-awareness, perseverance, and integrity.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 w-full max-w-md md:mx-0 mx-auto px-4">
-            <a href="/donate" className="flex-1 bg-green-600 text-white px-6 md:px-8 py-4 md:py-5 rounded-full font-extrabold text-lg md:text-xl flex items-center justify-center gap-2 shadow-xl hover:bg-green-700 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white group">
-              Support US
-            </a>
-            <a href="/join" className="flex-1 bg-white bg-opacity-90 text-green-700 px-6 md:px-8 py-4 md:py-5 rounded-full font-extrabold text-lg md:text-xl flex items-center justify-center gap-2 shadow-xl hover:bg-green-100 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 group">
-              Learn More
-            </a>
-          </div>
-        </div>
-      </div>
-      {/* Animated SVG wave at bottom */}
-      <div className="absolute bottom-0 left-0 w-full z-30 pointer-events-none">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-20">
-          <path fill="#bbf7d0" fillOpacity="0.5" d="M0,40 C480,80 960,0 1440,40 L1440,80 L0,80 Z" />
-        </svg>
-      </div>
+      
+      {/* Hero Section with Slideshow */}
+      <HeroSection />
+
       {/* Purpose & Mission Section: Glassmorphic, Modern, Visually Striking */}
       <section className="relative py-16 md:py-32 bg-gradient-to-br from-green-100 via-white to-green-50 animate-fade-in-up">
         {/* Watermark background image */}
