@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const images = [
-    { src: 'images/Front Page image.png', position: 'center 30%' },
-    { src: 'images/changingimage1.JPEG', position: 'center 40%' },
+    { src: 'images/Front Page image.png', position: 'center -10%' },
+    { src: 'images/changingimage1.JPEG', position: 'center 20%' },
     { src: 'images/changingimage2.JPEG', position: 'center 35%' },
-    { src: 'images/changingimage3.JPG', position: 'center 45%' },
+    { src: 'images/changingimage3.JPG', position: 'center 35%' },
     { src: 'images/changingimage4.JPG', position: 'center 40%' },
     { src: 'images/changingimage5.JPG', position: 'center 35%' }
   ];
