@@ -113,13 +113,13 @@ const Navigation = () => {
           </button>
         </div>
 
-        {/* Enhanced Mobile Menu */}
+        {/* Enhanced Mobile Menu - Fixed Height */}
         <div className={`lg:hidden transition-all duration-500 ease-in-out ${
           isOpen 
-            ? 'max-h-96 opacity-100 transform translate-y-0' 
+            ? 'max-h-[500px] opacity-100 transform translate-y-0' 
             : 'max-h-0 opacity-0 transform -translate-y-4'
         } overflow-hidden`}>
-          <div className="py-4 space-y-2 bg-white/95 backdrop-blur-sm rounded-b-xl border-t border-green-100">
+          <div className="py-6 space-y-3 bg-white/95 backdrop-blur-sm rounded-b-xl border-t border-green-100 shadow-lg">
             {navItems.map((item, index) => (
               <Link
                 key={item.name}

@@ -1,18 +1,33 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { Heart, DollarSign, ArrowRight, Check, CreditCard, ExternalLink } from 'lucide-react';
+import { Heart, DollarSign, ArrowRight, Check, CreditCard, Loader2 } from 'lucide-react';
 
 const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(250);
   const [customAmount, setCustomAmount] = useState('');
   const [donationType, setDonationType] = useState<'one-time' | 'monthly'>('one-time');
+  const [paypalLoaded, setPaypalLoaded] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const predefinedAmounts = [100, 250, 500, 1000];
 
-  // Replace with your actual PayPal.me username
-  const paypalMeUsername = 'your-paypal-username';
+  // Load PayPal SDK
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD&intent=capture';
+    script.async = true;
+    script.onload = () => setPaypalLoaded(true);
+    document.body.appendChild(script);
+
+    return () => {
+      const existingScript = document.querySelector('script[src*="paypal.com/sdk/js"]');
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   const handleAmountSelect = (amount: number) => {
     setSelectedAmount(amount);
@@ -28,19 +43,45 @@ const Donate = () => {
     return selectedAmount || parseInt(customAmount) || 0;
   };
 
-  const handlePayPalDonation = () => {
+  // PayPal button configuration
+  const createPayPalOrder = (data: any, actions: any) => {
     const amount = getCurrentAmount();
-    if (amount > 0) {
-      // PayPal.me URL with amount
-      const paypalUrl = `https://paypal.me/${paypalMeUsername}/${amount}`;
-      window.open(paypalUrl, '_blank');
-    }
+    if (amount <= 0) return;
+    
+    setIsProcessing(true);
+    
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: amount.toString(),
+          },
+          description: `Unit 180 ${donationType === 'monthly' ? 'Monthly' : 'One-time'} Donation`,
+          custom_id: `unit180_${donationType}_${Date.now()}`,
+        },
+      ],
+    });
   };
 
-  const handleCustomPayPalDonation = () => {
-    // PayPal.me URL without amount (user enters manually)
-    const paypalUrl = `https://paypal.me/${paypalMeUsername}`;
-    window.open(paypalUrl, '_blank');
+  const onApprove = (data: any, actions: any) => {
+    return actions.order.capture().then((details: any) => {
+      setIsProcessing(false);
+      // Handle successful payment
+      alert(`Thank you for your donation! Transaction completed by ${details.payer.name.given_name}`);
+      // Reset form
+      setSelectedAmount(250);
+      setCustomAmount('');
+    }).catch((err: any) => {
+      setIsProcessing(false);
+      console.error('Payment failed:', err);
+      alert('Payment failed. Please try again.');
+    });
+  };
+
+  const onError = (err: any) => {
+    setIsProcessing(false);
+    console.error('PayPal error:', err);
+    alert('An error occurred. Please try again.');
   };
 
   return (
@@ -174,35 +215,35 @@ const Donate = () => {
                     </div>
                   </div>
                   
-                  {/* PayPal Donation Buttons */}
+                  {/* PayPal Buttons */}
                   <div className="space-y-4">
-                    {/* Main PayPal Button */}
-                    {getCurrentAmount() > 0 && (
-                      <button
-                        onClick={handlePayPalDonation}
-                        className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-4 rounded-full font-extrabold text-xl hover:bg-blue-600 transition-all duration-200 hover:scale-105 shadow-xl flex items-center justify-center group focus:outline-none focus:ring-2 focus:ring-blue-400"
-                      >
-                        <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal" className="h-6 mr-2" />
-                        Donate ${getCurrentAmount()} {donationType === 'monthly' ? '/month' : ''}
-                        <ExternalLink className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-                      </button>
+                    {paypalLoaded && getCurrentAmount() > 0 && (
+                      <div className="w-full">
+                        <div
+                          id="paypal-button-container"
+                          className="w-full"
+                        />
+                      </div>
                     )}
-
-                    {/* Custom Amount PayPal Button */}
-                    <button
-                      onClick={handleCustomPayPalDonation}
-                      className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-full font-extrabold text-xl hover:bg-green-600 transition-all duration-200 hover:scale-105 shadow-xl flex items-center justify-center group focus:outline-none focus:ring-2 focus:ring-green-400"
-                    >
-                      <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal" className="h-6 mr-2" />
-                      Donate Custom Amount
-                      <ExternalLink className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-                    </button>
+                    
+                    {!paypalLoaded && getCurrentAmount() > 0 && (
+                      <div className="w-full bg-gray-100 rounded-lg p-4 flex items-center justify-center">
+                        <Loader2 className="w-6 h-6 animate-spin text-green-500 mr-2" />
+                        <span className="text-gray-600">Loading payment options...</span>
+                      </div>
+                    )}
+                    
+                    {getCurrentAmount() === 0 && (
+                      <div className="w-full bg-gray-100 rounded-lg p-4 text-center">
+                        <span className="text-gray-600">Please select an amount to donate</span>
+                      </div>
+                    )}
                     
                     {/* Alternative Payment Methods */}
                     <div className="text-center">
                       <div className="flex items-center justify-center space-x-2 text-sm text-gray-600 mb-2">
                         <CreditCard className="w-4 h-4" />
-                        <span>Secure payment through PayPal</span>
+                        <span>Secure payment powered by PayPal</span>
                       </div>
                       <div className="flex items-center justify-center space-x-4 text-xs text-gray-500">
                         <span>Visa</span>
@@ -224,6 +265,43 @@ const Donate = () => {
           </div>
         </div>
       </div>
+      
+      {/* PayPal Button Script */}
+      {paypalLoaded && getCurrentAmount() > 0 && (
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              paypal.Buttons({
+                createOrder: function(data, actions) {
+                  return actions.order.create({
+                    purchase_units: [{
+                      amount: {
+                        value: '${getCurrentAmount()}'
+                      },
+                      description: 'Unit 180 ${donationType === 'monthly' ? 'Monthly' : 'One-time'} Donation',
+                      custom_id: 'unit180_${donationType}_${Date.now()}'
+                    }]
+                  });
+                },
+                onApprove: function(data, actions) {
+                  return actions.order.capture().then(function(details) {
+                    alert('Thank you for your donation! Transaction completed by ' + details.payer.name.given_name);
+                    // Reset form
+                    window.location.reload();
+                  }).catch(function(err) {
+                    console.error('Payment failed:', err);
+                    alert('Payment failed. Please try again.');
+                  });
+                },
+                onError: function(err) {
+                  console.error('PayPal error:', err);
+                  alert('An error occurred. Please try again.');
+                }
+              }).render('#paypal-button-container');
+            `
+          }}
+        />
+      )}
 
       {/* Animations */}
       <style>{`
