@@ -33,11 +33,11 @@ const HeroSection = () => {
       className="relative min-h-[80vh] flex items-center justify-center overflow-hidden font-sans"
     >
       {/* Animated SVG Pattern */}
-      <svg className="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#22c55e" fillOpacity="0.2" d="M0,160L60,170.7C120,181,240,203,360,197.3C480,192,600,160,720,133.3C840,107,960,85,1080,101.3C1200,117,1320,171,1380,197.3L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z" />
+      <svg className="absolute inset-0 w-full h-full opacity-10 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#22c55e" fillOpacity="0.1" d="M0,160L60,170.7C120,181,240,203,360,197.3C480,192,600,160,720,133.3C840,107,960,85,1080,101.3C1200,117,1320,171,1380,197.3L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z" />
       </svg>
-      {/* Animated Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-green-400/80 via-green-600/60 to-black/80 animate-gradient-x" />
+      {/* Lighter Animated Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-green-400/30 via-green-600/20 to-black/40 animate-gradient-x" />
       
       {/* Debug Display */}
       <div className="absolute top-4 left-4 z-30 bg-black/70 text-white p-2 rounded text-sm">
@@ -51,14 +51,15 @@ const HeroSection = () => {
             key={index}
             src={image} 
             alt={`Mentorship slideshow ${index + 1}`} 
-            className={`absolute inset-0 w-full h-full object-cover object-center scale-105 blur-[1px] transition-opacity duration-1000 ${
+            className={`absolute inset-0 w-full h-full object-cover object-center scale-105 transition-opacity duration-1000 ${
               index === currentImageIndex ? 'opacity-100' : 'opacity-0'
             }`}
             onLoad={() => console.log(`Image ${index + 1} loaded:`, image)}
             onError={() => console.error(`Failed to load image ${index + 1}:`, image)}
           />
         ))}
-        <div className="absolute inset-0 bg-black/60" />
+        {/* Much lighter overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
       {/* Slideshow Indicators */}
