@@ -207,41 +207,77 @@ const Index = () => {
                     <div className={`flex-1 flex w-full ${isLeft ? 'justify-end md:pr-12' : 'justify-start md:pl-12'}`}> 
                       {isLeft ? (
                         <div className="w-full max-w-lg">
-                          <div className={`relative bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border-t-8 border-green-400 p-8 md:p-12 flex flex-col items-center md:items-end group-hover:shadow-green-300/40 group-hover:bg-white/90 transition-all duration-700 overflow-hidden transform group-hover:-translate-y-2 group-hover:scale-105 ${
+                          <div className={`relative bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl border border-green-200/60 p-6 md:p-8 flex flex-col group-hover:shadow-2xl group-hover:bg-white transition-all duration-700 overflow-hidden transform group-hover:-translate-y-1 group-hover:scale-[1.02] ${
                             isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-20'
                           }`} style={{ 
-                            borderLeft: '6px solid #22c55e', 
-                            background: 'linear-gradient(135deg, rgba(240, 253, 244, 0.9) 60%, rgba(187, 247, 208, 0.8) 100%)',
-                            boxShadow: isVisible ? '0 25px 50px -12px rgba(34, 197, 94, 0.25)' : 'none'
+                            boxShadow: isVisible ? '0 20px 40px -12px rgba(34, 197, 94, 0.15), 0 8px 16px -8px rgba(34, 197, 94, 0.1)' : 'none'
                           }}>
                             
-                            <img src={
-                              idx === 1
-                                ? 'images/Image of kids.jpg'
-                                : idx === 2
-                                  ? 'images/picture of kids 4.jpg'
-                                  : JOURNEY_IMAGES[idx % JOURNEY_IMAGES.length]
-                            } alt={item.step + ' photo'} className="w-full max-w-md h-48 md:h-64 lg:h-80 object-cover object-center rounded-2xl shadow-xl border-4 border-green-300 mb-8 transition-all duration-700 group-hover:-rotate-1 group-hover:scale-105 ring-4 ring-green-200/50 group-hover:ring-green-300/70" 
-                            style={{ boxShadow: '0 20px 40px -8px rgba(34, 197, 94, 0.3)' }} />
-                            
-                            <div className="flex items-center gap-4 mb-6">
-                              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-2xl font-black text-white shadow-xl border-4 border-white group-hover:scale-110 transition-all duration-500">
-                                {idx + 1}
+                            {/* Card Header with Step Info */}
+                            <div className="flex items-center justify-between mb-6 pb-4 border-b border-green-100">
+                              <div className="flex items-center gap-3">
+                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-lg font-bold text-white shadow-md group-hover:scale-110 transition-all duration-500">
+                                  {idx + 1}
+                                </div>
+                                <div>
+                                  <h4 className="text-2xl md:text-3xl font-bold text-green-700 group-hover:text-green-600 transition-colors duration-500">
+                                    {item.step}
+                                  </h4>
+                                  <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full mt-1" />
+                                </div>
                               </div>
-                              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-200 to-emerald-300 flex items-center justify-center text-2xl shadow-lg border-2 border-green-300 group-hover:rotate-12 transition-all duration-500">
+                              <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-xl text-green-600 group-hover:bg-green-100 group-hover:rotate-12 transition-all duration-500">
                                 {item.icon}
                               </div>
                             </div>
-                            
-                            <div className="flex flex-col items-center w-full mb-6">
-                              <div className="text-3xl md:text-4xl lg:text-5xl font-black text-green-700 text-center tracking-tight leading-tight group-hover:text-green-600 transition-colors duration-500">
-                                {item.step}
+
+                            {/* Image Container with Better Fitting */}
+                            <div className="relative mb-6 overflow-hidden rounded-xl group-hover:shadow-lg transition-all duration-500">
+                              <div className="aspect-[4/3] w-full">
+                                <img 
+                                  src={
+                                    idx === 1 ? 'images/Image of kids.jpg' :
+                                    idx === 2 ? 'images/picture of kids 4.jpg' :
+                                    JOURNEY_IMAGES[idx % JOURNEY_IMAGES.length]
+                                  } 
+                                  alt={`${item.step} journey step`} 
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                                  style={{ 
+                                    objectPosition: idx === 0 ? 'center 30%' : 
+                                                   idx === 1 ? 'center 40%' : 
+                                                   idx === 2 ? 'center 35%' : 
+                                                   idx === 3 ? 'center 45%' : 'center 40%'
+                                  }}
+                                />
                               </div>
-                              <div className="w-32 h-2 rounded-full mt-3 bg-gradient-to-r from-green-400 to-emerald-500 group-hover:from-green-500 group-hover:to-emerald-600 transition-all duration-500" />
+                              {/* Image Overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                              <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <span className="text-white text-sm font-medium bg-black/30 px-2 py-1 rounded-md backdrop-blur-sm">
+                                  Step {idx + 1}
+                                </span>
+                              </div>
                             </div>
-                            
-                            <div className="text-lg md:text-xl lg:text-2xl text-gray-700 max-w-md text-center font-medium leading-relaxed group-hover:text-gray-800 transition-colors duration-500">
-                              {item.desc}
+
+                            {/* Card Content */}
+                            <div className="flex-1">
+                              <p className="text-base md:text-lg text-gray-700 leading-relaxed group-hover:text-gray-800 transition-colors duration-500">
+                                {item.desc}
+                              </p>
+                            </div>
+
+                            {/* Card Footer - Progress Indicator */}
+                            <div className="mt-6 pt-4 border-t border-green-50">
+                              <div className="flex items-center justify-between text-sm text-gray-500">
+                                <span>Progress</span>
+                                <span>{idx + 1} of {TIMELINE.length}</span>
+                              </div>
+                              <div className="w-full bg-green-100 rounded-full h-2 mt-2">
+                                <div 
+                                  className="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full transition-all duration-1000 group-hover:from-green-400 group-hover:to-emerald-400"
+                                  style={{ width: `${((idx + 1) / TIMELINE.length) * 100}%` }}
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -271,41 +307,77 @@ const Index = () => {
                     <div className={`flex-1 flex w-full ${!isLeft ? 'justify-start md:pl-12' : 'justify-end md:pr-12'}`}>
                       {!isLeft ? (
                         <div className="w-full max-w-lg">
-                          <div className={`relative bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border-t-8 border-green-400 p-8 md:p-12 flex flex-col items-center md:items-start group-hover:shadow-green-300/40 group-hover:bg-white/90 transition-all duration-700 overflow-hidden transform group-hover:-translate-y-2 group-hover:scale-105 ${
+                          <div className={`relative bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl border border-green-200/60 p-6 md:p-8 flex flex-col group-hover:shadow-2xl group-hover:bg-white transition-all duration-700 overflow-hidden transform group-hover:-translate-y-1 group-hover:scale-[1.02] ${
                             isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-20'
                           }`} style={{ 
-                            borderRight: '6px solid #22c55e', 
-                            background: 'linear-gradient(135deg, rgba(240, 253, 244, 0.9) 60%, rgba(187, 247, 208, 0.8) 100%)',
-                            boxShadow: isVisible ? '0 25px 50px -12px rgba(34, 197, 94, 0.25)' : 'none'
+                            boxShadow: isVisible ? '0 20px 40px -12px rgba(34, 197, 94, 0.15), 0 8px 16px -8px rgba(34, 197, 94, 0.1)' : 'none'
                           }}>
                             
-                            <img src={
-                              idx === 1
-                                ? 'images/Image of kids.jpg'
-                                : idx === 2
-                                  ? 'images/picture of kids 4.jpg'
-                                  : JOURNEY_IMAGES[idx % JOURNEY_IMAGES.length]
-                            } alt={item.step + ' photo'} className="w-full max-w-md h-48 md:h-64 lg:h-80 object-cover object-center rounded-2xl shadow-xl border-4 border-green-300 mb-8 transition-all duration-700 group-hover:rotate-1 group-hover:scale-105 ring-4 ring-green-200/50 group-hover:ring-green-300/70" 
-                            style={{ boxShadow: '0 20px 40px -8px rgba(34, 197, 94, 0.3)' }} />
-                            
-                            <div className="flex items-center gap-4 mb-6">
-                              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-2xl font-black text-white shadow-xl border-4 border-white group-hover:scale-110 transition-all duration-500">
-                                {idx + 1}
+                            {/* Card Header with Step Info */}
+                            <div className="flex items-center justify-between mb-6 pb-4 border-b border-green-100">
+                              <div className="flex items-center gap-3">
+                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-lg font-bold text-white shadow-md group-hover:scale-110 transition-all duration-500">
+                                  {idx + 1}
+                                </div>
+                                <div>
+                                  <h4 className="text-2xl md:text-3xl font-bold text-green-700 group-hover:text-green-600 transition-colors duration-500">
+                                    {item.step}
+                                  </h4>
+                                  <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full mt-1" />
+                                </div>
                               </div>
-                              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-200 to-emerald-300 flex items-center justify-center text-2xl shadow-lg border-2 border-green-300 group-hover:rotate-12 transition-all duration-500">
+                              <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-xl text-green-600 group-hover:bg-green-100 group-hover:rotate-12 transition-all duration-500">
                                 {item.icon}
                               </div>
                             </div>
-                            
-                            <div className="flex flex-col items-center w-full mb-6">
-                              <div className="text-3xl md:text-4xl lg:text-5xl font-black text-green-700 text-center tracking-tight leading-tight group-hover:text-green-600 transition-colors duration-500">
-                                {item.step}
+
+                            {/* Image Container with Better Fitting */}
+                            <div className="relative mb-6 overflow-hidden rounded-xl group-hover:shadow-lg transition-all duration-500">
+                              <div className="aspect-[4/3] w-full">
+                                <img 
+                                  src={
+                                    idx === 1 ? 'images/Image of kids.jpg' :
+                                    idx === 2 ? 'images/picture of kids 4.jpg' :
+                                    JOURNEY_IMAGES[idx % JOURNEY_IMAGES.length]
+                                  } 
+                                  alt={`${item.step} journey step`} 
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                                  style={{ 
+                                    objectPosition: idx === 0 ? 'center 30%' : 
+                                                   idx === 1 ? 'center 40%' : 
+                                                   idx === 2 ? 'center 35%' : 
+                                                   idx === 3 ? 'center 45%' : 'center 40%'
+                                  }}
+                                />
                               </div>
-                              <div className="w-32 h-2 rounded-full mt-3 bg-gradient-to-r from-green-400 to-emerald-500 group-hover:from-green-500 group-hover:to-emerald-600 transition-all duration-500" />
+                              {/* Image Overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                              <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <span className="text-white text-sm font-medium bg-black/30 px-2 py-1 rounded-md backdrop-blur-sm">
+                                  Step {idx + 1}
+                                </span>
+                              </div>
                             </div>
-                            
-                            <div className="text-lg md:text-xl lg:text-2xl text-gray-700 max-w-md text-center font-medium leading-relaxed group-hover:text-gray-800 transition-colors duration-500">
-                              {item.desc}
+
+                            {/* Card Content */}
+                            <div className="flex-1">
+                              <p className="text-base md:text-lg text-gray-700 leading-relaxed group-hover:text-gray-800 transition-colors duration-500">
+                                {item.desc}
+                              </p>
+                            </div>
+
+                            {/* Card Footer - Progress Indicator */}
+                            <div className="mt-6 pt-4 border-t border-green-50">
+                              <div className="flex items-center justify-between text-sm text-gray-500">
+                                <span>Progress</span>
+                                <span>{idx + 1} of {TIMELINE.length}</span>
+                              </div>
+                              <div className="w-full bg-green-100 rounded-full h-2 mt-2">
+                                <div 
+                                  className="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full transition-all duration-1000 group-hover:from-green-400 group-hover:to-emerald-400"
+                                  style={{ width: `${((idx + 1) / TIMELINE.length) * 100}%` }}
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
