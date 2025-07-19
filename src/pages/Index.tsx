@@ -143,31 +143,31 @@ const Index = () => {
           </div>
         </div>
       </section>
-      {/* Modern Journey Section - Completely Redesigned */}
-      <section className="relative py-24 md:py-32 bg-gradient-to-br from-slate-900 via-gray-900 to-emerald-900 overflow-hidden">
+      {/* Modern Journey Section - Redesigned with Lighter Theme */}
+      <section className="relative py-24 md:py-32 bg-gradient-to-br from-green-50 via-white to-emerald-50 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-green-400/10 rounded-full blur-xl animate-float" />
-          <div className="absolute bottom-32 right-20 w-48 h-48 bg-emerald-500/10 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }} />
-          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-teal-400/10 rounded-full blur-lg animate-float" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-20 left-10 w-32 h-32 bg-green-400/20 rounded-full blur-xl animate-float" />
+          <div className="absolute bottom-32 right-20 w-48 h-48 bg-emerald-500/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-teal-400/20 rounded-full blur-lg animate-float" style={{ animationDelay: '1s' }} />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-20">
-            <h3 className="text-5xl md:text-7xl font-black text-transparent bg-gradient-to-r from-green-400 via-emerald-300 to-teal-400 bg-clip-text mb-6 animate-fade-in-up">
+            <h3 className="text-5xl md:text-7xl font-black text-transparent bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text mb-6 animate-fade-in-up">
               Your Journey
             </h3>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200">
+            <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200">
               From joining our brotherhood to becoming a leader who gives back—discover your path to greatness
             </p>
-            <div className="w-32 h-1 bg-gradient-to-r from-green-400 to-emerald-300 mx-auto mt-8 rounded-full animate-fade-in-up delay-400" />
+            <div className="w-32 h-1 bg-gradient-to-r from-green-500 to-emerald-500 mx-auto mt-8 rounded-full animate-fade-in-up delay-400" />
           </div>
 
           {/* Timeline Cards */}
           <div className="relative">
             {/* Central flowing line */}
-            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-green-400 via-emerald-500 to-teal-400 -translate-x-1/2 rounded-full opacity-30" />
+            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-green-500 via-emerald-500 to-teal-500 -translate-x-1/2 rounded-full opacity-40" />
             
             <div className="grid gap-12 lg:gap-16">
               {TIMELINE.map((item, idx) => {
@@ -190,26 +190,26 @@ const Index = () => {
                     <div className={`hidden lg:flex items-center ${isEven ? 'flex-row' : 'flex-row-reverse'} gap-8`}>
                       {/* Content Card */}
                       <div className="flex-1 max-w-lg">
-                        <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-green-400/30 transition-all duration-500 group-hover:bg-white/10 group-hover:scale-105 group-hover:-translate-y-2">
+                        <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-8 border border-green-200/50 hover:border-green-400/50 transition-all duration-500 group-hover:bg-white group-hover:scale-105 group-hover:-translate-y-2 shadow-lg hover:shadow-green-200/40">
                           {/* Gradient overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-green-100/20 to-emerald-200/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                           
                           {/* Content */}
                           <div className="relative z-10">
                             <div className="flex items-center gap-4 mb-6">
-                              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-2xl font-black text-white shadow-lg">
+                              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-2xl font-black text-white shadow-lg">
                                 {idx + 1}
                               </div>
-                              <div className="w-12 h-12 rounded-full bg-green-400/20 flex items-center justify-center text-2xl backdrop-blur-sm border border-green-400/30">
+                              <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-2xl border-2 border-green-300">
                                 {item.icon}
                               </div>
                             </div>
                             
-                            <h4 className="text-3xl font-bold text-white mb-4 group-hover:text-green-300 transition-colors duration-300">
+                            <h4 className="text-3xl font-bold text-gray-800 mb-4 group-hover:text-green-700 transition-colors duration-300">
                               {item.step}
                             </h4>
                             
-                            <p className="text-lg text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                            <p className="text-lg text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                               {item.desc}
                             </p>
                           </div>
@@ -218,13 +218,13 @@ const Index = () => {
 
                       {/* Central Node */}
                       <div className="relative">
-                        <div className="w-4 h-4 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full shadow-lg group-hover:scale-150 group-hover:shadow-green-400/50 transition-all duration-300" />
-                        <div className="absolute inset-0 w-4 h-4 bg-green-400 rounded-full animate-ping opacity-20" />
+                        <div className="w-4 h-4 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full shadow-lg group-hover:scale-150 group-hover:shadow-green-400/50 transition-all duration-300" />
+                        <div className="absolute inset-0 w-4 h-4 bg-green-400 rounded-full animate-ping opacity-30" />
                       </div>
 
                       {/* Image */}
                       <div className="flex-1 max-w-lg">
-                        <div className="relative overflow-hidden rounded-3xl group-hover:scale-105 transition-transform duration-500">
+                        <div className="relative overflow-hidden rounded-3xl group-hover:scale-105 transition-transform duration-500 shadow-lg">
                           <img 
                             src={
                               idx === 1 ? 'images/Image of kids.jpg' :
@@ -234,7 +234,7 @@ const Index = () => {
                             alt={`${item.step} journey step`}
                             className="w-full h-80 object-cover"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                           <div className="absolute bottom-6 left-6 right-6">
                             <div className="text-white font-semibold text-lg">Step {idx + 1}</div>
                             <div className="text-green-300 text-sm">{item.step}</div>
@@ -245,7 +245,7 @@ const Index = () => {
 
                     {/* Mobile Layout */}
                     <div className="lg:hidden">
-                      <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-green-400/30 transition-all duration-500 group-hover:bg-white/10">
+                      <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden border border-green-200/50 hover:border-green-400/50 transition-all duration-500 group-hover:bg-white shadow-lg">
                         {/* Mobile Image */}
                         <div className="relative h-48 overflow-hidden">
                           <img 
@@ -257,9 +257,9 @@ const Index = () => {
                             alt={`${item.step} journey step`}
                             className="w-full h-full object-cover"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                           <div className="absolute top-4 right-4">
-                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-lg font-black text-white shadow-lg">
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-lg font-black text-white shadow-lg">
                               {idx + 1}
                             </div>
                           </div>
@@ -268,15 +268,15 @@ const Index = () => {
                         {/* Mobile Content */}
                         <div className="p-6">
                           <div className="flex items-center gap-3 mb-4">
-                            <div className="w-10 h-10 rounded-full bg-green-400/20 flex items-center justify-center text-xl backdrop-blur-sm border border-green-400/30">
+                            <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-xl border-2 border-green-300">
                               {item.icon}
                             </div>
-                            <h4 className="text-2xl font-bold text-white group-hover:text-green-300 transition-colors duration-300">
+                            <h4 className="text-2xl font-bold text-gray-800 group-hover:text-green-700 transition-colors duration-300">
                               {item.step}
                             </h4>
                           </div>
                           
-                          <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                          <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                             {item.desc}
                           </p>
                         </div>
@@ -293,13 +293,13 @@ const Index = () => {
             <div className="inline-flex flex-col sm:flex-row gap-4">
               <Link 
                 to="/join"
-                className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-green-400 hover:to-emerald-400 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-green-500/25"
+                className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-green-500/25"
               >
                 Start Your Journey
               </Link>
               <Link 
                 to="/mentor"
-                className="border-2 border-green-400 text-green-400 px-8 py-4 rounded-full font-bold text-lg hover:bg-green-400 hover:text-white transition-all duration-300 hover:scale-105"
+                className="border-2 border-green-500 text-green-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-green-500 hover:text-white transition-all duration-300 hover:scale-105"
               >
                 Guide Others
               </Link>
