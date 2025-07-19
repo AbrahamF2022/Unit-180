@@ -105,13 +105,13 @@ const Index = () => {
       {/* Purpose & Mission Section: Glassmorphic, Modern, Visually Striking */}
       <section className="relative py-16 md:py-32 bg-gradient-to-br from-green-100 via-white to-green-50 animate-fade-in-up">
         {/* Watermark background image */}
-        {/* <img
+        <img
           src="images/Logo unit180.png"
           alt="Purpose Watermark"
-          className="pointer-events-none select-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-15 w-[70vw] max-w-4xl z-0"
+          className="pointer-events-none select-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 w-[60vw] max-w-3xl z-0"
           aria-hidden="true"
-        /> */}
-        <div className="max-w-6xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
+        />
+        <div className="max-w-6xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start relative z-10">
           {/* Purpose Card */}
           <div className="relative bg-white/70 backdrop-blur-lg rounded-3xl shadow-2xl p-8 md:p-14 border-t-8 border-green-400 flex flex-col justify-start animate-fade-in-up group overflow-hidden">
             {/* Large background icon */}
