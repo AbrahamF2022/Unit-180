@@ -4,6 +4,7 @@ import { Eye, ShieldCheck, Target, TrendingUp, Users } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
 import { useInView } from '../hooks/use-in-view';
+import { Link } from 'react-router-dom'; // Added Link import
 
 const FASTIDIOUS_5 = [
   { title: 'SELF-AWARENESS', desc: 'Greatness starts with knowing who you are.', icon: Eye, color: 'from-green-400 to-green-600' },
@@ -142,130 +143,166 @@ const Index = () => {
           </div>
         </div>
       </section>
-      {/* Journey Section: Premium Timeline with Card Borders and Enhanced Text */}
-      <section className="relative py-16 md:py-32 bg-gradient-to-br from-green-50 via-white to-green-100 overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 md:px-6 relative z-10">
-          <h3 className="text-3xl md:text-5xl font-extrabold text-green-700 mb-8 md:mb-16 text-center tracking-tight animate-slide-in-from-top">The Journey</h3>
+      {/* Modern Journey Section - Completely Redesigned */}
+      <section className="relative py-24 md:py-32 bg-gradient-to-br from-slate-900 via-gray-900 to-emerald-900 overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-green-400/10 rounded-full blur-xl animate-float" />
+          <div className="absolute bottom-32 right-20 w-48 h-48 bg-emerald-500/10 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-teal-400/10 rounded-full blur-lg animate-float" style={{ animationDelay: '1s' }} />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <h3 className="text-5xl md:text-7xl font-black text-transparent bg-gradient-to-r from-green-400 via-emerald-300 to-teal-400 bg-clip-text mb-6 animate-fade-in-up">
+              Your Journey
+            </h3>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200">
+              From joining our brotherhood to becoming a leader who gives back—discover your path to greatness
+            </p>
+            <div className="w-32 h-1 bg-gradient-to-r from-green-400 to-emerald-300 mx-auto mt-8 rounded-full animate-fade-in-up delay-400" />
+          </div>
+
+          {/* Timeline Cards */}
           <div className="relative">
-            {/* Faint green highlight behind timeline */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-16 bg-gradient-to-b from-green-100 via-green-200 to-green-100 opacity-60 -translate-x-1/2 z-0 rounded-full animate-pulse-slow" />
-            {/* Vertical timeline line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-2 bg-gradient-to-b from-green-200 via-green-400 to-green-100 rounded-full -translate-x-1/2 z-10 animate-timeline-grow" />
-            <div className="flex flex-col gap-12 md:gap-24 relative z-20">
+            {/* Central flowing line */}
+            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-green-400 via-emerald-500 to-teal-400 -translate-x-1/2 rounded-full opacity-30" />
+            
+            <div className="grid gap-12 lg:gap-16">
               {TIMELINE.map((item, idx) => {
-                const isLeft = idx % 2 === 0;
                 const isVisible = visibleTimelineItems.includes(idx);
+                const isEven = idx % 2 === 0;
+                
                 return (
                   <div
                     key={item.step}
-                    className={`timeline-item relative flex flex-col items-center md:flex-row min-h-[280px] md:min-h-[320px] group transition-all duration-700 ${
+                    className={`timeline-item group relative ${
                       isVisible 
-                        ? `animate-slide-in-from-${isLeft ? 'left' : 'right'}` 
-                        : 'opacity-0 translate-x-0'
+                        ? 'animate-slide-up opacity-100' 
+                        : 'opacity-0 translate-y-12'
                     }`}
                     style={{ 
-                      animationDelay: isVisible ? '0.1s' : '0s',
-                      transform: isVisible ? 'none' : `translateX(${isLeft ? '-100px' : '100px'})`
+                      animationDelay: isVisible ? `${idx * 150}ms` : '0s'
                     }}
                   >
-                    {/* Timeline connector for all but first step */}
-                    {idx > 0 && (
-                      <div className="hidden md:block absolute left-1/2 top-0 w-2 h-1/2 bg-green-200 -translate-x-1/2 z-0" />
-                    )}
-                    
-                    {/* Mobile: Timeline dot at top */}
-                    <div className="relative z-30 flex flex-col items-center mb-6 md:mb-0 md:hidden">
-                      <div className={`w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-2xl font-black text-white shadow-2xl border-4 border-white ring-4 ring-green-200 group-hover:ring-green-400 transition-all duration-500 ${
-                        isVisible ? 'animate-bounce-slow' : 'opacity-0 scale-0'
-                      }`} style={{ boxShadow: '0 0 32px 0 #bbf7d0' }}>{idx + 1}</div>
-                      <div className={`w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-xl mt-2 shadow-xl border-4 border-green-300 transition-all duration-500 ${
-                        isVisible ? 'animate-float' : 'opacity-0 scale-0'
-                      }`}>
-                        {item.icon}
-                      </div>
-                    </div>
-                    
-                    {/* Left or right content */}
-                    <div className={`flex-1 flex w-full ${isLeft ? 'justify-end md:pr-8' : 'justify-start md:pl-8'}`}> 
-                      {isLeft ? (
-                        <div className="w-full max-w-md">
-                          <div className={`relative bg-white/70 backdrop-blur-lg rounded-3xl shadow-2xl border-t-8 border-green-400 p-6 md:p-10 lg:p-12 flex flex-col items-center md:items-end group-hover:shadow-green-200/40 transition-all duration-700 overflow-hidden ${
-                            isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-20'
-                          }`} style={{ borderLeft: '6px solid #22c55e', background: 'linear-gradient(135deg, #f0fdf4 60%, #bbf7d0 100%)' }}>
-                            {/* Subtle pattern/gradient */}
-                            {/* <div className="absolute inset-0 bg-[url('images/extra%20picture.png')] bg-cover bg-center opacity-5 pointer-events-none" /> */}
-                            <img src={
-                              idx === 1
-                                ? 'images/Image of kids.jpg'
-                                : idx === 2
-                                  ? 'images/picture of kids 4.jpg'
-                                  : JOURNEY_IMAGES[idx % JOURNEY_IMAGES.length]
-                            } alt={item.step + ' photo'} className="w-full max-w-[32rem] h-48 md:h-72 lg:h-96 object-cover object-center rounded-3xl shadow-2xl border-4 md:border-8 border-green-300 mb-6 md:mb-8 transition-all duration-500 group-hover:-rotate-2 group-hover:scale-105 ring-4 ring-green-200/60 animate-float" style={{ boxShadow: '0 8px 48px 0 #bbf7d0, 0 2px 16px 0 #22c55e22' }} />
-                            <div className="flex items-center mb-2">
-                              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-xl md:text-2xl font-black text-white shadow-xl border-4 border-white mr-3 animate-bounce-slow">{idx + 1}</div>
-                              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-green-200 to-green-400 flex items-center justify-center text-lg md:text-2xl shadow-lg border-2 border-green-200 animate-pulse">
+                    {/* Desktop Layout */}
+                    <div className={`hidden lg:flex items-center ${isEven ? 'flex-row' : 'flex-row-reverse'} gap-8`}>
+                      {/* Content Card */}
+                      <div className="flex-1 max-w-lg">
+                        <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-green-400/30 transition-all duration-500 group-hover:bg-white/10 group-hover:scale-105 group-hover:-translate-y-2">
+                          {/* Gradient overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                          
+                          {/* Content */}
+                          <div className="relative z-10">
+                            <div className="flex items-center gap-4 mb-6">
+                              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-2xl font-black text-white shadow-lg">
+                                {idx + 1}
+                              </div>
+                              <div className="w-12 h-12 rounded-full bg-green-400/20 flex items-center justify-center text-2xl backdrop-blur-sm border border-green-400/30">
                                 {item.icon}
                               </div>
                             </div>
-                            <div className="flex flex-col items-center w-full mb-4">
-                              <div className="text-3xl md:text-4xl lg:text-5xl font-black text-green-700 text-center tracking-tight leading-tight">{item.step}</div>
-                              <div className="w-24 h-2 rounded-full mt-2 bg-gradient-to-r from-green-400 to-green-600" />
-                            </div>
-                            <div className="text-xl md:text-2xl lg:text-3xl text-gray-700 max-w-md text-center font-medium leading-relaxed mb-6">{item.desc}</div>
+                            
+                            <h4 className="text-3xl font-bold text-white mb-4 group-hover:text-green-300 transition-colors duration-300">
+                              {item.step}
+                            </h4>
+                            
+                            <p className="text-lg text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                              {item.desc}
+                            </p>
                           </div>
                         </div>
-                      ) : <div className="hidden md:block" style={{ minWidth: '1.5rem' }} />}
-                    </div>
-                    
-                    {/* Desktop: Timeline dot/step badge */}
-                    <div className="relative z-30 flex flex-col items-center hidden md:flex">
-                      <div className={`w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-3xl font-black text-white shadow-2xl border-4 border-white ring-4 ring-green-200 group-hover:ring-green-400 transition-all duration-500 ${
-                        isVisible ? 'animate-bounce-slow' : 'opacity-0 scale-0'
-                      }`} style={{ boxShadow: '0 0 32px 0 #bbf7d0' }}>{idx + 1}</div>
-                      <div className={`w-3 h-24 bg-green-200 rounded-full transition-all duration-700 ${
-                        isVisible ? 'animate-pulse-slow' : 'opacity-0'
-                      }`} />
-                      <div className={`w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-3xl mt-4 shadow-xl border-4 border-green-300 transition-all duration-500 ${
-                        isVisible ? 'animate-float' : 'opacity-0 scale-0'
-                      }`}>
-                        {item.icon}
+                      </div>
+
+                      {/* Central Node */}
+                      <div className="relative">
+                        <div className="w-4 h-4 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full shadow-lg group-hover:scale-150 group-hover:shadow-green-400/50 transition-all duration-300" />
+                        <div className="absolute inset-0 w-4 h-4 bg-green-400 rounded-full animate-ping opacity-20" />
+                      </div>
+
+                      {/* Image */}
+                      <div className="flex-1 max-w-lg">
+                        <div className="relative overflow-hidden rounded-3xl group-hover:scale-105 transition-transform duration-500">
+                          <img 
+                            src={
+                              idx === 1 ? 'images/Image of kids.jpg' :
+                              idx === 2 ? 'images/picture of kids 4.jpg' :
+                              JOURNEY_IMAGES[idx % JOURNEY_IMAGES.length]
+                            }
+                            alt={`${item.step} journey step`}
+                            className="w-full h-80 object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                          <div className="absolute bottom-6 left-6 right-6">
+                            <div className="text-white font-semibold text-lg">Step {idx + 1}</div>
+                            <div className="text-green-300 text-sm">{item.step}</div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    
-                    {/* Right or left content */}
-                    <div className={`flex-1 flex w-full ${!isLeft ? 'justify-start md:pl-8' : 'justify-end md:pr-8'}`}>
-                      {!isLeft ? (
-                        <div className="w-full max-w-md">
-                          <div className={`relative bg-white/70 backdrop-blur-lg rounded-3xl shadow-2xl border-t-8 border-green-400 p-6 md:p-10 lg:p-12 flex flex-col items-center md:items-start group-hover:shadow-green-200/40 transition-all duration-700 overflow-hidden ${
-                            isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-20'
-                          }`} style={{ borderRight: '6px solid #22c55e', background: 'linear-gradient(135deg, #f0fdf4 60%, #bbf7d0 100%)' }}>
-                            {/* Subtle pattern/gradient */}
-                            {/* <div className="absolute inset-0 bg-[url('images/extra%20picture.png')] bg-cover bg-center opacity-5 pointer-events-none" /> */}
-                            <img src={
-                              idx === 1
-                                ? 'images/Image of kids.jpg'
-                                : idx === 2
-                                  ? 'images/picture of kids 4.jpg'
-                                  : JOURNEY_IMAGES[idx % JOURNEY_IMAGES.length]
-                            } alt={item.step + ' photo'} className="w-full max-w-[32rem] h-48 md:h-72 lg:h-96 object-cover object-center rounded-3xl shadow-2xl border-4 md:border-8 border-green-300 mb-6 md:mb-8 transition-all duration-500 group-hover:rotate-2 group-hover:scale-105 ring-4 ring-green-200/60 animate-float" style={{ boxShadow: '0 8px 48px 0 #bbf7d0, 0 2px 16px 0 #22c55e22' }} />
-                            <div className="flex items-center mb-2">
-                              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-xl md:text-2xl font-black text-white shadow-xl border-4 border-white mr-3 animate-bounce-slow">{idx + 1}</div>
-                              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-green-200 to-green-400 flex items-center justify-center text-lg md:text-2xl shadow-lg border-2 border-green-200 animate-pulse">
-                                {item.icon}
-                              </div>
+
+                    {/* Mobile Layout */}
+                    <div className="lg:hidden">
+                      <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-green-400/30 transition-all duration-500 group-hover:bg-white/10">
+                        {/* Mobile Image */}
+                        <div className="relative h-48 overflow-hidden">
+                          <img 
+                            src={
+                              idx === 1 ? 'images/Image of kids.jpg' :
+                              idx === 2 ? 'images/picture of kids 4.jpg' :
+                              JOURNEY_IMAGES[idx % JOURNEY_IMAGES.length]
+                            }
+                            alt={`${item.step} journey step`}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                          <div className="absolute top-4 right-4">
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-lg font-black text-white shadow-lg">
+                              {idx + 1}
                             </div>
-                            <div className="flex flex-col items-center w-full mb-4">
-                              <div className="text-3xl md:text-4xl lg:text-5xl font-black text-green-700 text-center tracking-tight leading-tight">{item.step}</div>
-                              <div className="w-24 h-2 rounded-full mt-2 bg-gradient-to-r from-green-400 to-green-600" />
-                            </div>
-                            <div className="text-xl md:text-2xl lg:text-3xl text-gray-700 max-w-md text-center font-medium leading-relaxed mb-6">{item.desc}</div>
                           </div>
                         </div>
-                      ) : <div className="hidden md:block" style={{ minWidth: '1.5rem' }} />}
+
+                        {/* Mobile Content */}
+                        <div className="p-6">
+                          <div className="flex items-center gap-3 mb-4">
+                            <div className="w-10 h-10 rounded-full bg-green-400/20 flex items-center justify-center text-xl backdrop-blur-sm border border-green-400/30">
+                              {item.icon}
+                            </div>
+                            <h4 className="text-2xl font-bold text-white group-hover:text-green-300 transition-colors duration-300">
+                              {item.step}
+                            </h4>
+                          </div>
+                          
+                          <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                            {item.desc}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 );
               })}
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center mt-20">
+            <div className="inline-flex flex-col sm:flex-row gap-4">
+              <Link 
+                to="/join"
+                className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-green-400 hover:to-emerald-400 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-green-500/25"
+              >
+                Start Your Journey
+              </Link>
+              <Link 
+                to="/mentor"
+                className="border-2 border-green-400 text-green-400 px-8 py-4 rounded-full font-bold text-lg hover:bg-green-400 hover:text-white transition-all duration-300 hover:scale-105"
+              >
+                Guide Others
+              </Link>
             </div>
           </div>
         </div>
@@ -359,6 +396,10 @@ const Index = () => {
         animation: timeline-grow 2s ease-out forwards;
       }
       
+      .animate-slide-up {
+        animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      
       @keyframes glowJourney {
         0% { box-shadow: 0 0 0 0 #4ade80; }
         100% { box-shadow: 0 0 32px 8px #4ade80; }
@@ -410,6 +451,17 @@ const Index = () => {
       @keyframes timeline-grow {
         from { height: 0; }
         to { height: 100%; }
+      }
+      
+      @keyframes slide-up {
+        from {
+          opacity: 0;
+          transform: translateY(60px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
       }
     `}</style>
     </>
