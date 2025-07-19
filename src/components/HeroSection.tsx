@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const images = [
-    'images/Front Page image.png',
-    'images/changingimage1.JPEG',
-    'images/changingimage2.JPEG',
-    'images/changingimage3.JPG',
-    'images/changingimage4.JPG',
-    'images/changingimage5.JPG',
-    'images/changingimage6.JPG'
+    { src: 'images/Front Page image.png', position: 'center 30%' },
+    { src: 'images/changingimage1.JPEG', position: 'center 40%' },
+    { src: 'images/changingimage2.JPEG', position: 'center 35%' },
+    { src: 'images/changingimage3.JPG', position: 'center 45%' },
+    { src: 'images/changingimage4.JPG', position: 'center 40%' },
+    { src: 'images/changingimage5.JPG', position: 'center 35%' },
+    { src: 'images/changingimage6.JPG', position: 'center 40%' }
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -49,13 +49,17 @@ const HeroSection = () => {
         {images.map((image, index) => (
           <img 
             key={index}
-            src={image} 
+            src={image.src} 
             alt={`Mentorship slideshow ${index + 1}`} 
-            className={`absolute inset-0 w-full h-full object-cover object-center scale-105 transition-opacity duration-1000 ${
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               index === currentImageIndex ? 'opacity-100' : 'opacity-0'
             }`}
-            onLoad={() => console.log(`Image ${index + 1} loaded:`, image)}
-            onError={() => console.error(`Failed to load image ${index + 1}:`, image)}
+            style={{
+              objectPosition: image.position, // Individual positioning for each image
+              transform: 'scale(1.05)', // Reduced scale for better fitting
+            }}
+            onLoad={() => console.log(`Image ${index + 1} loaded:`, image.src)}
+            onError={() => console.error(`Failed to load image ${index + 1}:`, image.src)}
           />
         ))}
         {/* Much lighter overlay for better text readability */}
