@@ -108,7 +108,7 @@ const Index = () => {
         <img
           src="images/Logo unit180.png"
           alt="Purpose Watermark"
-          className="pointer-events-none select-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 w-[60vw] max-w-3xl z-0"
+          className="pointer-events-none select-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 w-[60vw] max-w-3xl z-0"
           aria-hidden="true"
         />
         <div className="max-w-6xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start relative z-10">
