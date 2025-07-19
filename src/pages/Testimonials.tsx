@@ -1,6 +1,7 @@
 
 import React, { useState, useRef } from 'react';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 import { Quote, Star, Heart, Users, Target, ArrowRight, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -256,6 +257,8 @@ const Testimonials = () => {
           100% { transform: scale(1); }
         }
       `}</style>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 import { User, Mail, Phone, MapPin, Briefcase, GraduationCap, Heart, Send, CheckCircle, ArrowRight, ArrowLeft, Loader2 } from 'lucide-react';
 import { submitMentorForm } from '../lib/formSubmission';
 
@@ -435,6 +436,9 @@ const BecomeMentor = () => {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

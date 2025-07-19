@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 
 const images = [
   { src: 'images/IMG_8392.jpg', alt: 'Mentorship moment 1', caption: 'Building Bonds', description: 'Mentors and mentees connecting through shared experiences' },
@@ -254,6 +255,9 @@ const Gallery = () => {
           overflow: hidden;
         }
       `}</style>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

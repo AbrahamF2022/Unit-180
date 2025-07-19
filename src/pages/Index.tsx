@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Eye, ShieldCheck, Target, TrendingUp, Users } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
+import Footer from '../components/Footer';
 import { useInView } from '../hooks/use-in-view';
 
 const FASTIDIOUS_5 = [
@@ -472,6 +473,9 @@ const Index = () => {
         to { height: 100%; }
       }
     `}</style>
+
+      {/* Footer */}
+      <Footer />
     </>
   );
 };

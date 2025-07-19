@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 import { Heart, DollarSign, ArrowRight, Check } from 'lucide-react';
 
 const Donate = () => {
@@ -190,6 +191,9 @@ const Donate = () => {
           }
         }
       `}</style>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

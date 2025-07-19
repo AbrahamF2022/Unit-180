@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 import { User, Mail, Phone, MapPin, Calendar, FileText, Send, CheckCircle, ArrowRight, ArrowLeft, Loader2 } from 'lucide-react';
 import { submitMenteeForm } from '../lib/formSubmission';
 
@@ -448,6 +449,9 @@ const JoinMentee = () => {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
