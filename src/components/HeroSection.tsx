@@ -10,32 +10,32 @@ const HeroSection = () => {
     { 
       src: 'images/Front Page image.png', 
       position: 'center -35%',
-      mobilePosition: 'center -20%'
+      mobilePosition: 'center 0%'
     },
     { 
       src: 'images/changingimage1.JPEG', 
       position: 'center -10%',
-      mobilePosition: 'center 0%'
+      mobilePosition: 'center 15%'
     },
     { 
       src: 'images/changingimage2.JPEG', 
       position: 'center 15%',
-      mobilePosition: 'center 10%'
+      mobilePosition: 'center 25%'
     },
     { 
       src: 'images/changingimage3.JPG', 
       position: 'center 15%',
-      mobilePosition: 'center 10%'
+      mobilePosition: 'center 25%'
     },
     { 
       src: 'images/changingimage4.JPG', 
       position: 'center 20%',
-      mobilePosition: 'center 15%'
+      mobilePosition: 'center 30%'
     },
     { 
       src: 'images/changingimage5.JPG', 
       position: 'center 35%',
-      mobilePosition: 'center 25%'
+      mobilePosition: 'center 40%'
     }
   ];
 
