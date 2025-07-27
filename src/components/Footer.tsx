@@ -79,7 +79,7 @@ const Footer = () => {
                   </div>
                   <div className="text-gray-300">
                     <p className="font-semibold text-lg mb-1">Unit 180 Headquarters</p>
-                    <p className="text-base">123 Community Drive<br />Atlanta, GA 30309</p>
+                    <p className="text-base">2501 Chatham Rd. Suite 5418<br />Sringfield, IL 627049</p>
                   </div>
                 </div>
                 
@@ -88,17 +88,15 @@ const Footer = () => {
                     <Phone className="w-6 h-6 text-green-400" />
                   </div>
                   <a href="tel:+1-555-UNIT-180" className="text-gray-300 hover:text-green-400 transition-colors duration-300 text-lg font-medium">
-                    (555) UNIT-180
+                   (312) 488-9668
                   </a>
                 </div>
                 
                 <div className="flex items-center justify-center lg:justify-start space-x-4 group">
-                  <div className="p-3 bg-green-500/20 rounded-full group-hover:bg-green-500/30 transition-colors duration-300 flex-shrink-0">
-                    <Mail className="w-6 h-6 text-green-400" />
+                <div className="p-3 bg-green-500/20 rounded-full group-hover:bg-green-500/30 transition-colors duration-300 flex-shrink-0">
+                   
                   </div>
-                  <a href="mailto:info@unit180.org" className="text-gray-300 hover:text-green-400 transition-colors duration-300 text-lg font-medium">
-                    info@unit180.org
-                  </a>
+                 
                 </div>
               </div>
             </div>

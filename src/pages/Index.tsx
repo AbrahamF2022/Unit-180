@@ -42,6 +42,7 @@ const Index = () => {
   const [selectedValue, setSelectedValue] = useState<number | null>(null);
   const [visibleTimelineItems, setVisibleTimelineItems] = useState<number[]>([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [activeTab, setActiveTab] = useState('founders');
   
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1200);
@@ -393,6 +394,218 @@ const Index = () => {
               </div>
             );
           })}
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Section: Professional Tabs Design */}
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-gray-900 via-green-900 to-black text-white overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-green-400/10 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-20 right-10 w-40 h-40 bg-emerald-500/8 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-teal-400/12 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }} />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-16 md:mb-20">
+            <h3 className="text-4xl md:text-6xl lg:text-7xl font-black text-transparent bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text mb-6 animate-slide-in-from-top">
+              Our Leadership
+            </h3>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8 animate-fade-in-up delay-200">
+              Meet the visionary founders and dedicated board members who drive our mission forward
+            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-emerald-500 mx-auto rounded-full animate-fade-in-up delay-400" />
+          </div>
+
+          {/* Professional Tab Navigation */}
+          <div className="flex justify-center mb-12 md:mb-16">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-2 border border-white/20 shadow-2xl">
+              <div className="flex space-x-2">
+                <button
+                  onClick={() => setActiveTab('founders')}
+                  className={`px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-base transition-all duration-300 ${
+                    activeTab === 'founders'
+                      ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg scale-105'
+                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  Our Founders/Visionary
+                </button>
+                <button
+                  onClick={() => setActiveTab('board')}
+                  className={`px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-base transition-all duration-300 ${
+                    activeTab === 'board'
+                      ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg scale-105'
+                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  Board of Directors
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Tab Content */}
+          <div className="relative">
+            {/* Founders Tab */}
+            <div className={`transition-all duration-500 ${activeTab === 'founders' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 absolute inset-0 pointer-events-none'}`}>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+                {/* Founder Card 1 */}
+                <div className="group relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
+                    {/* Placeholder Image */}
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-4xl md:text-5xl font-black text-white shadow-2xl border-4 border-white/20 group-hover:border-green-300/50 transition-all duration-500 group-hover:scale-110">
+                      <svg className="w-16 h-16 md:w-20 md:h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    
+                    <div className="flex-1 text-center md:text-left">
+                      <h4 className="text-2xl md:text-3xl font-black text-white mb-3 group-hover:text-green-300 transition-colors duration-300">
+                        Founder Name
+                      </h4>
+                      <p className="text-lg md:text-xl text-green-300 font-semibold mb-4">
+                        Executive Director & Visionary
+                      </p>
+                      <p className="text-gray-300 leading-relaxed">
+                        A passionate leader dedicated to transforming young lives through mentorship, education, and community building. With years of experience in youth development, they bring innovative approaches to creating lasting positive change.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Founder Card 2 */}
+                <div className="group relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
+                    {/* Placeholder Image */}
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-4xl md:text-5xl font-black text-white shadow-2xl border-4 border-white/20 group-hover:border-emerald-300/50 transition-all duration-500 group-hover:scale-110">
+                      <svg className="w-16 h-16 md:w-20 md:h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    
+                    <div className="flex-1 text-center md:text-left">
+                      <h4 className="text-2xl md:text-3xl font-black text-white mb-3 group-hover:text-emerald-300 transition-colors duration-300">
+                        Co-Founder Name
+                      </h4>
+                      <p className="text-lg md:text-xl text-emerald-300 font-semibold mb-4">
+                        Program Director & Mentor
+                      </p>
+                      <p className="text-gray-300 leading-relaxed">
+                        Committed to building strong relationships and fostering personal growth in young men. Their expertise in leadership development and community engagement drives our program's success and impact.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Board of Directors Tab */}
+            <div className={`transition-all duration-500 ${activeTab === 'board' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 absolute inset-0 pointer-events-none'}`}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                {/* Board Member 1 */}
+                <div className="group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 text-center">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="relative z-10">
+                    {/* Placeholder Image */}
+                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-2xl md:text-3xl font-black text-white shadow-xl border-4 border-white/20 group-hover:border-green-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-4">
+                      <svg className="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    
+                    <h4 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-green-300 transition-colors duration-300">
+                      Emanuel A Smith Jr
+                    </h4>
+                    <p className="text-sm md:text-base text-green-300 font-medium mb-3">
+                      Board Member
+                    </p>
+                    <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                      Dedicated to advancing our mission through strategic leadership and community engagement.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Board Member 2 */}
+                <div className="group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 text-center">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="relative z-10">
+                    {/* Placeholder Image */}
+                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-2xl md:text-3xl font-black text-white shadow-xl border-4 border-white/20 group-hover:border-emerald-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-4">
+                      <svg className="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    
+                    <h4 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors duration-300">
+                      Ra'Marri Jones
+                    </h4>
+                    <p className="text-sm md:text-base text-emerald-300 font-medium mb-3">
+                      Board Member
+                    </p>
+                    <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                      Committed to fostering positive change and supporting youth development initiatives.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Board Member 3 */}
+                <div className="group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 text-center">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="relative z-10">
+                    {/* Placeholder Image */}
+                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-2xl md:text-3xl font-black text-white shadow-xl border-4 border-white/20 group-hover:border-teal-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-4">
+                      <svg className="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    
+                    <h4 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-teal-300 transition-colors duration-300">
+                      Dr. Theresa J. Smith
+                    </h4>
+                    <p className="text-sm md:text-base text-teal-300 font-medium mb-3">
+                      Board Member
+                    </p>
+                    <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                      Bringing academic expertise and research-driven approaches to youth mentorship programs.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Board Member 4 */}
+                <div className="group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 text-center">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="relative z-10">
+                    {/* Placeholder Image */}
+                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-2xl md:text-3xl font-black text-white shadow-xl border-4 border-white/20 group-hover:border-cyan-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-4">
+                      <svg className="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    
+                    <h4 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors duration-300">
+                      Alexis Y. Hardy
+                    </h4>
+                    <p className="text-sm md:text-base text-cyan-300 font-medium mb-3">
+                      Board Member
+                    </p>
+                    <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                      Passionate about creating opportunities and building strong community partnerships.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
