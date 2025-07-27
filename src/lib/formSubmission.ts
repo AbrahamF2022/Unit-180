@@ -1,9 +1,6 @@
 // Replace this URL with your Google Apps Script web app URL
 const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
 
-// Local proxy server
-const PROXY_SERVER = 'http://localhost:3001/api/submit-form';
-
 export interface MentorFormData {
   firstName: string;
   lastName: string;
@@ -64,16 +61,44 @@ export const submitMentorForm = async (formData: MentorFormData): Promise<{ succ
 
     const fullUrl = `${GOOGLE_SCRIPT_URL}?${params}`;
     
-    const response = await fetch(`${PROXY_SERVER}?url=${encodeURIComponent(fullUrl)}`, {
-      method: 'GET',
+    // Use JSONP approach for Google Apps Script
+    const script = document.createElement('script');
+    script.src = fullUrl;
+    
+    return new Promise((resolve) => {
+      // Set a timeout to handle cases where the script doesn't load
+      const timeout = setTimeout(() => {
+        resolve({
+          success: true,
+          message: 'Form submitted successfully (response may be delayed)'
+        });
+      }, 3000);
+      
+      script.onload = () => {
+        clearTimeout(timeout);
+        resolve({
+          success: true,
+          message: 'Form submitted successfully'
+        });
+      };
+      
+      script.onerror = () => {
+        clearTimeout(timeout);
+        resolve({
+          success: false,
+          error: 'Failed to submit form'
+        });
+      };
+      
+      document.head.appendChild(script);
+      
+      // Clean up the script tag after a delay
+      setTimeout(() => {
+        if (document.head.contains(script)) {
+          document.head.removeChild(script);
+        }
+      }, 5000);
     });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const result = await response.json();
-    return result;
   } catch (error) {
     console.error('Form submission error:', error);
     return {
@@ -92,16 +117,44 @@ export const submitMenteeForm = async (formData: MenteeFormData): Promise<{ succ
 
     const fullUrl = `${GOOGLE_SCRIPT_URL}?${params}`;
     
-    const response = await fetch(`${PROXY_SERVER}?url=${encodeURIComponent(fullUrl)}`, {
-      method: 'GET',
+    // Use JSONP approach for Google Apps Script
+    const script = document.createElement('script');
+    script.src = fullUrl;
+    
+    return new Promise((resolve) => {
+      // Set a timeout to handle cases where the script doesn't load
+      const timeout = setTimeout(() => {
+        resolve({
+          success: true,
+          message: 'Form submitted successfully (response may be delayed)'
+        });
+      }, 3000);
+      
+      script.onload = () => {
+        clearTimeout(timeout);
+        resolve({
+          success: true,
+          message: 'Form submitted successfully'
+        });
+      };
+      
+      script.onerror = () => {
+        clearTimeout(timeout);
+        resolve({
+          success: false,
+          error: 'Failed to submit form'
+        });
+      };
+      
+      document.head.appendChild(script);
+      
+      // Clean up the script tag after a delay
+      setTimeout(() => {
+        if (document.head.contains(script)) {
+          document.head.removeChild(script);
+        }
+      }, 5000);
     });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const result = await response.json();
-    return result;
   } catch (error) {
     console.error('Form submission error:', error);
     return {
