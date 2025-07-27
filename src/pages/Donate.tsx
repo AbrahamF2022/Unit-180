@@ -16,7 +16,7 @@ const Donate = () => {
   // Load PayPal SDK
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = 'https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD&intent=capture';
+            script.src = 'https://www.paypal.com/sdk/js?client-id=test&currency=USD&intent=capture';
     script.async = true;
     script.onload = () => setPaypalLoaded(true);
     document.body.appendChild(script);
