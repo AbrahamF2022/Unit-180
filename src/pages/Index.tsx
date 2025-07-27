@@ -240,13 +240,15 @@ const Index = () => {
                               boxShadow: '0 20px 40px -8px rgba(34, 197, 94, 0.3)',
                               objectPosition: isMobile ? 
                                 (idx === 0 ? 'center 50%' : 
-                                 idx === 1 ? 'center 60%' : 
+                                 idx === 1 ? 'center 75%' : 
                                  idx === 2 ? 'center 55%' : 
-                                 idx === 3 ? 'center 65%' : 'center 60%') :
+                                 idx === 3 ? 'center 65%' : 
+                                 idx === 4 ? 'center 80%' : 'center 60%') :
                                 (idx === 0 ? 'center 30%' : 
                                  idx === 1 ? 'center 40%' : 
                                  idx === 2 ? 'center 35%' : 
-                                 idx === 3 ? 'center 45%' : 'center 40%')
+                                 idx === 3 ? 'center 45%' : 
+                                 idx === 4 ? 'center 40%' : 'center 40%')
                             }} />
                             
                             <div className="flex items-center gap-4 mb-6">
@@ -315,13 +317,15 @@ const Index = () => {
                               boxShadow: '0 20px 40px -8px rgba(34, 197, 94, 0.3)',
                               objectPosition: isMobile ? 
                                 (idx === 0 ? 'center 50%' : 
-                                 idx === 1 ? 'center 60%' : 
+                                 idx === 1 ? 'center 75%' : 
                                  idx === 2 ? 'center 55%' : 
-                                 idx === 3 ? 'center 65%' : 'center 60%') :
+                                 idx === 3 ? 'center 65%' : 
+                                 idx === 4 ? 'center 80%' : 'center 60%') :
                                 (idx === 0 ? 'center 30%' : 
                                  idx === 1 ? 'center 40%' : 
                                  idx === 2 ? 'center 35%' : 
-                                 idx === 3 ? 'center 45%' : 'center 40%')
+                                 idx === 3 ? 'center 45%' : 
+                                 idx === 4 ? 'center 40%' : 'center 40%')
                             }} />
                             
                             <div className="flex items-center gap-4 mb-6">
