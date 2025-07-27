@@ -249,8 +249,7 @@ const Index = () => {
                                  idx === 2 ? 'center 35%' : 
                                  idx === 3 ? 'center 45%' : 
                                  idx === 4 ? 'center 40%' : 'center 40%'),
-                              transform: isMobile && (idx === 1 || idx === 4) ? 'translateY(-200px) !important' : 'none',
-                              border: isMobile && (idx === 1 || idx === 4) ? '3px solid red' : 'none'
+                              transform: isMobile && (idx === 1 || idx === 4) ? 'translateY(-200px) !important' : 'none'
                             }} />
                             
                             <div className="flex items-center gap-4 mb-6">
