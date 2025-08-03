@@ -457,7 +457,8 @@ const Index = () => {
           <div className="relative">
             {/* Founders Tab */}
             <div className={`transition-all duration-500 ${activeTab === 'founders' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 absolute inset-0 pointer-events-none'}`}>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+              <div className="flex justify-center">
+                <div className="max-w-2xl">
                 {/* Founder Card 1 */}
                 <div className="group relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20">
                   <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -483,31 +484,6 @@ const Index = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Founder Card 2 */}
-                <div className="group relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
-                  <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
-                    {/* Placeholder Image */}
-                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-4xl md:text-5xl font-black text-white shadow-2xl border-4 border-white/20 group-hover:border-emerald-300/50 transition-all duration-500 group-hover:scale-110">
-                      <svg className="w-16 h-16 md:w-20 md:h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
-                    
-                    <div className="flex-1 text-center md:text-left">
-                      <h4 className="text-2xl md:text-3xl font-black text-white mb-3 group-hover:text-emerald-300 transition-colors duration-300">
-                        Co-Founder Name
-                      </h4>
-                      <p className="text-lg md:text-xl text-emerald-300 font-semibold mb-4">
-                        Program Director & Mentor
-                      </p>
-                      <p className="text-gray-300 leading-relaxed">
-                        Committed to building strong relationships and fostering personal growth in young men. Their expertise in leadership development and community engagement drives our program's success and impact.
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

@@ -7,6 +7,12 @@ const images = [
   { src: 'images/IMG_8394.jpg', alt: 'Mentorship moment 2', caption: 'Celebrating Success', description: 'Recognizing achievements and milestones together' },
   { src: 'images/IMG_8395.jpg', alt: 'Mentorship moment 3', caption: 'Growing Together', description: 'Learning and developing side by side' },
   { src: 'images/c.png', alt: 'Mentorship event', caption: 'Community Impact', description: 'Making a difference in our community' },
+  { src: 'images/Gallery Pic 1.jpg', alt: 'Gallery moment 1', caption: 'Leadership Development', description: 'Empowering young leaders through mentorship' },
+  { src: 'images/Gallery Pic 2.jpg', alt: 'Gallery moment 2', caption: 'Team Building', description: 'Building strong relationships and teamwork skills' },
+  { src: 'images/Gallery Pic 4.jpg', alt: 'Gallery moment 4', caption: 'Community Engagement', description: 'Active participation in community activities' },
+  { src: 'images/Gallery Pic 6.jpg', alt: 'Gallery moment 6', caption: 'Personal Growth', description: 'Individual development and self-improvement' },
+  { src: 'images/Gallery Pic 8.jpg', alt: 'Gallery moment 8', caption: 'Achievement Celebration', description: 'Recognizing and celebrating personal milestones' },
+  { src: 'images/Gallery Video.MP4', alt: 'Gallery video', caption: 'Mentorship in Action', description: 'Watch our mentorship program in action', isVideo: true },
 ];
 
 const Gallery = () => {
@@ -84,13 +90,24 @@ const Gallery = () => {
                 }}
                 onClick={() => setLightbox(idx)}
               >
-                {/* Image with overlay effects */}
+                {/* Image/Video with overlay effects */}
                 <div className="relative h-full overflow-hidden">
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+                  {img.isVideo ? (
+                    <video
+                      src={img.src}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      muted
+                      loop
+                      onMouseEnter={(e) => (e.target as HTMLVideoElement).play()}
+                      onMouseLeave={(e) => (e.target as HTMLVideoElement).pause()}
+                    />
+                  ) : (
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  )}
                   
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
@@ -110,9 +127,15 @@ const Gallery = () => {
                   
                   {/* Corner accent */}
                   <div className="absolute top-4 right-4 w-8 h-8 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
+                    {img.isVideo ? (
+                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    ) : (
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                    )}
                   </div>
                 </div>
               </div>
@@ -128,11 +151,21 @@ const Gallery = () => {
           onClick={() => setLightbox(null)}
         >
           <div className="relative max-w-5xl mx-4 animate-scale-in">
-            <img
-              src={images[lightbox].src}
-              alt={images[lightbox].alt}
-              className="max-h-[85vh] max-w-full rounded-2xl shadow-2xl border border-white/20"
-            />
+            {images[lightbox].isVideo ? (
+              <video
+                src={images[lightbox].src}
+                className="max-h-[85vh] max-w-full rounded-2xl shadow-2xl border border-white/20"
+                controls
+                autoPlay
+                loop
+              />
+            ) : (
+              <img
+                src={images[lightbox].src}
+                alt={images[lightbox].alt}
+                className="max-h-[85vh] max-w-full rounded-2xl shadow-2xl border border-white/20"
+              />
+            )}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent rounded-b-2xl p-6 text-white">
               <h3 className="text-2xl font-bold mb-2">{images[lightbox].caption}</h3>
               <p className="text-gray-200">{images[lightbox].description}</p>

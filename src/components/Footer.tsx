@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Heart, Users, Target, Award } from 'lucide-react';
+import { MapPin, Phone, Mail, Heart, Users, Target, Award, Instagram } from 'lucide-react';
 
 const Footer = () => {
   const stats = [
@@ -93,10 +93,12 @@ const Footer = () => {
                 </div>
                 
                 <div className="flex items-center justify-center lg:justify-start space-x-4 group">
-                <div className="p-3 bg-green-500/20 rounded-full group-hover:bg-green-500/30 transition-colors duration-300 flex-shrink-0">
-                   
+                  <div className="p-3 bg-green-500/20 rounded-full group-hover:bg-green-500/30 transition-colors duration-300 flex-shrink-0">
+                    <Instagram className="w-6 h-6 text-green-400" />
                   </div>
-                 
+                  <a href="https://instagram.com/unit180mentoring" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-green-400 transition-colors duration-300 text-lg font-medium">
+                    @unit180mentoring
+                  </a>
                 </div>
               </div>
             </div>

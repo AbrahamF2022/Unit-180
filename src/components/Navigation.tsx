@@ -141,7 +141,7 @@ const Navigation = () => {
                 
                 {/* Text */}
                 <span className="relative z-10 flex items-center">
-                  {item.name}
+                {item.name}
                   {isActive(item.path) && (
                     <span className="ml-auto w-2 h-2 bg-green-300 rounded-full animate-pulse" />
                   )}
