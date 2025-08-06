@@ -464,11 +464,11 @@ const Index = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
-                    {/* Emmanuel Smith Image */}
+                    {/* Emanuel Smith Image */}
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group-hover:border-green-300/50 transition-all duration-500 group-hover:scale-110">
                       <img 
                         src="/images/Emmanuel Smith.jpg" 
-                        alt="Emmanuel Smith Jr" 
+                        alt="Emanuel Smith Jr" 
                         className="w-full h-full object-cover object-center"
                         style={{ objectPosition: 'center -10%' }}
                       />
@@ -476,7 +476,7 @@ const Index = () => {
                     
                     <div className="flex-1 text-center md:text-left">
                       <h4 className="text-2xl md:text-3xl font-black text-white mb-3 group-hover:text-green-300 transition-colors duration-300">
-                        Emmanuel Smith Jr
+                        Emanuel Smith Jr
                       </h4>
                       <p className="text-lg md:text-xl text-green-300 font-semibold mb-4">
                         Founder & Executive Director
@@ -499,18 +499,18 @@ const Index = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <div className="relative z-10">
-                    {/* Emmanuel Smith Image */}
+                    {/* Emanuel Smith Image */}
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group-hover:border-green-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-6">
                       <img 
                         src="/images/Emmanuel Smith.jpg" 
-                        alt="Emmanuel A Smith Jr" 
+                        alt="Emanuel A Smith Jr" 
                         className="w-full h-full object-cover object-center"
                         style={{ objectPosition: 'center -10%' }}
                       />
                     </div>
                     
                     <h4 className="text-xl md:text-3xl font-bold text-white mb-3 group-hover:text-green-300 transition-colors duration-300">
-                      Emmanuel A Smith Jr
+                      Emanuel A Smith Jr
                     </h4>
                     <p className="text-base md:text-lg text-green-300 font-medium mb-4">
                       Founder & Executive Director
