@@ -19,6 +19,20 @@ const Navigation = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  // Scroll to top when location changes
+  useEffect(() => {
+    scrollToTop();
+  }, [location.pathname]);
+
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -72,6 +86,7 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
+                onClick={scrollToTop}
                 className={`relative font-semibold text-sm uppercase tracking-wide px-4 py-2 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-white group overflow-hidden ${
                   isActive(item.path) 
                     ? 'text-white bg-green-600 shadow-lg transform scale-105' 
@@ -124,7 +139,10 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false);
+                  scrollToTop();
+                }}
                 className={`block px-6 py-4 font-bold text-base uppercase tracking-wider rounded-xl mx-2 focus:outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300 relative overflow-hidden group ${
                   isActive(item.path)
                     ? 'text-white bg-green-600 shadow-lg'

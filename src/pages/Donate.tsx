@@ -4,19 +4,37 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { Heart, DollarSign, ArrowRight, Check, CreditCard, Loader2 } from 'lucide-react';
 
+// Declare PayPal global object
+declare global {
+  interface Window {
+    paypal: any;
+  }
+}
+
 const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(250);
   const [customAmount, setCustomAmount] = useState('');
-  const [donationType, setDonationType] = useState<'one-time' | 'monthly'>('one-time');
   const [paypalLoaded, setPaypalLoaded] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
 
   const predefinedAmounts = [100, 250, 500, 1000];
 
+  // Get current amount function
+  const getCurrentAmount = () => {
+    return selectedAmount || parseInt(customAmount) || 0;
+  };
+
   // Load PayPal SDK
   useEffect(() => {
+    const paypalClientId = import.meta.env.VITE_PAYPAL_CLIENT_ID;
+    
+    if (!paypalClientId) {
+      console.error('PayPal Client ID not found in environment variables');
+      return;
+    }
+
     const script = document.createElement('script');
-            script.src = 'https://www.paypal.com/sdk/js?client-id=test&currency=USD&intent=capture';
+    script.src = `https://www.paypal.com/sdk/js?client-id=${paypalClientId}&currency=USD&intent=capture`;
     script.async = true;
     script.onload = () => setPaypalLoaded(true);
     document.body.appendChild(script);
@@ -29,6 +47,54 @@ const Donate = () => {
     };
   }, []);
 
+  // Render PayPal button when SDK is loaded and amount is selected
+  useEffect(() => {
+    if (paypalLoaded && getCurrentAmount() > 0 && window.paypal) {
+      // Clear existing buttons
+      const container = document.getElementById('paypal-button-container');
+      if (container) {
+        container.innerHTML = '';
+        
+        window.paypal.Buttons({
+          createOrder: function(data: any, actions: any) {
+            const amount = getCurrentAmount();
+            if (amount <= 0) return;
+            
+            setIsProcessing(true);
+            
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: amount.toString(),
+                },
+                description: 'Unit 180 One-time Donation',
+                custom_id: `unit180_one_time_${Date.now()}`,
+              }],
+            });
+          },
+          onApprove: function(data: any, actions: any) {
+            return actions.order.capture().then(function(details: any) {
+              setIsProcessing(false);
+              alert('Thank you for your donation! Transaction completed by ' + details.payer.name.given_name);
+              // Reset form
+              setSelectedAmount(250);
+              setCustomAmount('');
+            }).catch(function(err: any) {
+              setIsProcessing(false);
+              console.error('Payment failed:', err);
+              alert('Payment failed. Please try again.');
+            });
+          },
+          onError: function(err: any) {
+            setIsProcessing(false);
+            console.error('PayPal error:', err);
+            alert('An error occurred. Please try again.');
+          }
+        }).render('#paypal-button-container');
+      }
+    }
+  }, [paypalLoaded, selectedAmount, customAmount]);
+
   const handleAmountSelect = (amount: number) => {
     setSelectedAmount(amount);
     setCustomAmount('');
@@ -37,10 +103,6 @@ const Donate = () => {
   const handleCustomAmountChange = (value: string) => {
     setCustomAmount(value);
     setSelectedAmount(null);
-  };
-
-  const getCurrentAmount = () => {
-    return selectedAmount || parseInt(customAmount) || 0;
   };
 
   // PayPal button configuration
@@ -56,8 +118,8 @@ const Donate = () => {
           amount: {
             value: amount.toString(),
           },
-          description: `Unit 180 ${donationType === 'monthly' ? 'Monthly' : 'One-time'} Donation`,
-          custom_id: `unit180_${donationType}_${Date.now()}`,
+          description: 'Unit 180 One-time Donation',
+          custom_id: `unit180_one_time_${Date.now()}`,
         },
       ],
     });
@@ -162,29 +224,7 @@ const Donate = () => {
                   <h2 className="text-2xl font-bold">Make a Donation</h2>
                 </div>
                 <div className="p-10">
-                  {/* Donation Type Toggle */}
-                  <div className="flex bg-green-100 rounded-lg p-1 mb-8">
-                    <button
-                      onClick={() => setDonationType('one-time')}
-                      className={`flex-1 py-3 px-4 rounded-md font-semibold transition-all duration-200 ${
-                        donationType === 'one-time'
-                          ? 'bg-green-500 text-white shadow-md'
-                          : 'text-green-700 hover:text-green-900'
-                      }`}
-                    >
-                      One-time
-                    </button>
-                    <button
-                      onClick={() => setDonationType('monthly')}
-                      className={`flex-1 py-3 px-4 rounded-md font-semibold transition-all duration-200 ${
-                        donationType === 'monthly'
-                          ? 'bg-green-500 text-white shadow-md'
-                          : 'text-green-700 hover:text-green-900'
-                      }`}
-                    >
-                      Monthly
-                    </button>
-                  </div>
+
                   {/* Amount Selection */}
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     {predefinedAmounts.map((amount) => (
@@ -266,42 +306,7 @@ const Donate = () => {
         </div>
       </div>
       
-      {/* PayPal Button Script */}
-      {paypalLoaded && getCurrentAmount() > 0 && (
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              paypal.Buttons({
-                createOrder: function(data, actions) {
-                  return actions.order.create({
-                    purchase_units: [{
-                      amount: {
-                        value: '${getCurrentAmount()}'
-                      },
-                      description: 'Unit 180 ${donationType === 'monthly' ? 'Monthly' : 'One-time'} Donation',
-                      custom_id: 'unit180_${donationType}_${Date.now()}'
-                    }]
-                  });
-                },
-                onApprove: function(data, actions) {
-                  return actions.order.capture().then(function(details) {
-                    alert('Thank you for your donation! Transaction completed by ' + details.payer.name.given_name);
-                    // Reset form
-                    window.location.reload();
-                  }).catch(function(err) {
-                    console.error('Payment failed:', err);
-                    alert('Payment failed. Please try again.');
-                  });
-                },
-                onError: function(err) {
-                  console.error('PayPal error:', err);
-                  alert('An error occurred. Please try again.');
-                }
-              }).render('#paypal-button-container');
-            `
-          }}
-        />
-      )}
+
 
       {/* Animations */}
       <style>{`

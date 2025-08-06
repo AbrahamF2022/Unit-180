@@ -127,21 +127,31 @@ const Testimonials = () => {
             <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
               <div className="relative">
                 <div className="relative">
-                  <div className="relative w-full aspect-w-16 aspect-h-9 bg-black">
-                    {/* Always use the original, uncompressed file for best clarity */}
+                  <div className="relative w-full aspect-w-16 aspect-h-9 bg-black video-container">
+                    {/* Optimized video with better quality settings */}
                     <video
                       ref={videoRef}
                       className="w-full max-w-full max-h-[600px] object-contain"
                       controls
+                      preload="metadata"
+                      playsInline
                       poster="images/placeholder.svg"
                       onPlay={() => setIsPlaying(true)}
                       onPause={() => setIsPlaying(false)}
                       onError={(e) => console.error('Video error:', e)}
                       onLoadStart={() => console.log('Video loading started')}
                       onCanPlay={() => console.log('Video can play')}
+                      style={{ 
+                        maxWidth: '100%',
+                        height: 'auto',
+                        objectFit: 'contain'
+                      }}
                     >
+                      {/* Use the highest quality source first */}
                       <source src="images/B7E5B2C2-968F-4283-AFE8-35536F1989CF.mov" type="video/quicktime" />
+                      <source src="images/B7E5B2C2-968F-4283-AFE8-35536F1989CF-trimmed.mov" type="video/quicktime" />
                       <source src="images/testimonial-web.mp4" type="video/mp4" />
+                      <source src="images/Gallery Video.MP4" type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
                     {/* Play overlay, only show if not playing */}
@@ -205,6 +215,22 @@ const Testimonials = () => {
         </div>
       </div>
       <style>{`
+        /* Video quality optimization */
+        video {
+          image-rendering: -webkit-optimize-contrast;
+          image-rendering: crisp-edges;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Ensure video maintains quality */
+        .video-container video {
+          max-width: 100%;
+          height: auto;
+          object-fit: contain;
+          background: #000;
+        }
+        
         .speech-bubble {
           position: relative;
         }

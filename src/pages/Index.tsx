@@ -464,22 +464,25 @@ const Index = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
-                    {/* Placeholder Image */}
-                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-4xl md:text-5xl font-black text-white shadow-2xl border-4 border-white/20 group-hover:border-green-300/50 transition-all duration-500 group-hover:scale-110">
-                      <svg className="w-16 h-16 md:w-20 md:h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
+                    {/* Emmanuel Smith Image */}
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group-hover:border-green-300/50 transition-all duration-500 group-hover:scale-110">
+                      <img 
+                        src="images/Emmanuel Smith.jpg" 
+                        alt="Emmanuel Smith Jr" 
+                        className="w-full h-full object-cover object-center"
+                        style={{ objectPosition: 'center -10%' }}
+                      />
                     </div>
                     
                     <div className="flex-1 text-center md:text-left">
                       <h4 className="text-2xl md:text-3xl font-black text-white mb-3 group-hover:text-green-300 transition-colors duration-300">
-                        Founder Name
+                        Emmanuel Smith Jr
                       </h4>
                       <p className="text-lg md:text-xl text-green-300 font-semibold mb-4">
-                        Executive Director & Visionary
+                        Founder & Executive Director
                       </p>
                       <p className="text-gray-300 leading-relaxed">
-                        A passionate leader dedicated to transforming young lives through mentorship, education, and community building. With years of experience in youth development, they bring innovative approaches to creating lasting positive change.
+                        A passionate leader dedicated to transforming young lives through mentorship, education, and community building. With years of experience in youth development, Emmanuel brings innovative approaches to creating lasting positive change and has been the driving force behind Unit 180's mission to empower young men.
                       </p>
                     </div>
                   </div>
@@ -490,98 +493,107 @@ const Index = () => {
 
             {/* Board of Directors Tab */}
             <div className={`transition-all duration-500 ${activeTab === 'board' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 absolute inset-0 pointer-events-none'}`}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 {/* Board Member 1 */}
-                <div className="group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 text-center">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="group relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 text-center">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <div className="relative z-10">
-                    {/* Placeholder Image */}
-                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-2xl md:text-3xl font-black text-white shadow-xl border-4 border-white/20 group-hover:border-green-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-4">
-                      <svg className="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
+                    {/* Emmanuel Smith Image */}
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group-hover:border-green-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-6">
+                      <img 
+                        src="images/Emmanuel Smith.jpg" 
+                        alt="Emmanuel A Smith Jr" 
+                        className="w-full h-full object-cover object-center"
+                        style={{ objectPosition: 'center -10%' }}
+                      />
                     </div>
                     
-                    <h4 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-green-300 transition-colors duration-300">
-                      Emanuel A Smith Jr
+                    <h4 className="text-xl md:text-3xl font-bold text-white mb-3 group-hover:text-green-300 transition-colors duration-300">
+                      Emmanuel A Smith Jr
                     </h4>
-                    <p className="text-sm md:text-base text-green-300 font-medium mb-3">
-                      Board Member
+                    <p className="text-base md:text-lg text-green-300 font-medium mb-4">
+                      Founder & Executive Director
                     </p>
-                    <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                    <p className="text-sm md:text-base text-gray-300 leading-relaxed">
                       Dedicated to advancing our mission through strategic leadership and community engagement.
                     </p>
                   </div>
                 </div>
 
                 {/* Board Member 2 */}
-                <div className="group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 text-center">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="group relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 text-center">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <div className="relative z-10">
-                    {/* Placeholder Image */}
-                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-2xl md:text-3xl font-black text-white shadow-xl border-4 border-white/20 group-hover:border-emerald-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-4">
-                      <svg className="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
+                    {/* Ramiri Image */}
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group-hover:border-emerald-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-6">
+                      <img 
+                        src="images/Ramiri inside final.jpg" 
+                        alt="Ramiri" 
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     
-                    <h4 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors duration-300">
+                    <h4 className="text-xl md:text-3xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors duration-300">
                       Ra'Marri Jones
                     </h4>
-                    <p className="text-sm md:text-base text-emerald-300 font-medium mb-3">
+                    <p className="text-base md:text-lg text-emerald-300 font-medium mb-4">
                       Board Member
                     </p>
-                    <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                    <p className="text-sm md:text-base text-gray-300 leading-relaxed">
                       Committed to fostering positive change and supporting youth development initiatives.
                     </p>
                   </div>
                 </div>
 
                 {/* Board Member 3 */}
-                <div className="group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 text-center">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="group relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 text-center">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <div className="relative z-10">
-                    {/* Placeholder Image */}
-                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-2xl md:text-3xl font-black text-white shadow-xl border-4 border-white/20 group-hover:border-teal-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-4">
-                      <svg className="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
+                    {/* Theresa Image */}
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group-hover:border-teal-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-6">
+                      <img 
+                        src="images/theresa inside.jpg" 
+                        alt="Dr. Theresa J. Smith" 
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     
-                    <h4 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-teal-300 transition-colors duration-300">
+                    <h4 className="text-xl md:text-3xl font-bold text-white mb-3 group-hover:text-teal-300 transition-colors duration-300">
                       Dr. Theresa J. Smith
                     </h4>
-                    <p className="text-sm md:text-base text-teal-300 font-medium mb-3">
+                    <p className="text-base md:text-lg text-teal-300 font-medium mb-4">
                       Board Member
                     </p>
-                    <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                    <p className="text-sm md:text-base text-gray-300 leading-relaxed">
                       Bringing academic expertise and research-driven approaches to youth mentorship programs.
                     </p>
                   </div>
                 </div>
 
                 {/* Board Member 4 */}
-                <div className="group relative bg-white/10 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 text-center">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="group relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/20 hover:border-green-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 text-center">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <div className="relative z-10">
-                    {/* Placeholder Image */}
-                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-2xl md:text-3xl font-black text-white shadow-xl border-4 border-white/20 group-hover:border-cyan-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-4">
-                      <svg className="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
+                    {/* Alexis Image */}
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group-hover:border-cyan-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-6">
+                      <img 
+                        src="images/alexis inside final.jpg" 
+                        alt="Alexis Y. Hardy" 
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     
-                    <h4 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors duration-300">
+                    <h4 className="text-xl md:text-3xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
                       Alexis Y. Hardy
                     </h4>
-                    <p className="text-sm md:text-base text-cyan-300 font-medium mb-3">
+                    <p className="text-base md:text-lg text-cyan-300 font-medium mb-4">
                       Board Member
                     </p>
-                    <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                    <p className="text-sm md:text-base text-gray-300 leading-relaxed">
                       Passionate about creating opportunities and building strong community partnerships.
                     </p>
                   </div>
