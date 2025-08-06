@@ -466,12 +466,12 @@ const Index = () => {
                   <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
                     {/* Emanuel Smith Image */}
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group-hover:border-green-300/50 transition-all duration-500 group-hover:scale-110">
-                      <img 
-                        src="/images/Emmanuel Smith.jpg" 
-                        alt="Emanuel Smith Jr" 
-                        className="w-full h-full object-cover object-center"
-                        style={{ objectPosition: 'center -5%' }}
-                      />
+                                          <img 
+                      src="/images/Emmanuel Smith.jpg" 
+                      alt="Emanuel Smith Jr" 
+                      className="w-full h-full object-cover object-center"
+                      style={{ objectPosition: 'center -15%' }}
+                    />
                     </div>
                     
                     <div className="flex-1 text-center md:text-left">
@@ -482,7 +482,7 @@ const Index = () => {
                         Founder & Executive Director
                       </p>
                       <p className="text-gray-300 leading-relaxed">
-                        A passionate leader dedicated to transforming young lives through mentorship, education, and community building. With years of experience in youth development, Emmanuel brings innovative approaches to creating lasting positive change and has been the driving force behind Unit 180's mission to empower young men.
+                        A passionate leader dedicated to transforming young lives through mentorship, education, and community building. With years of experience in youth development, Emanuel brings innovative approaches to creating lasting positive change and has been the driving force behind Unit 180's mission to empower young men.
                       </p>
                     </div>
                   </div>
@@ -505,7 +505,7 @@ const Index = () => {
                         src="/images/Emmanuel Smith.jpg" 
                         alt="Emanuel A. Smith Jr" 
                         className="w-full h-full object-cover object-center"
-                        style={{ objectPosition: 'center -5%' }}
+                        style={{ objectPosition: 'center -15%' }}
                       />
                     </div>
                     
