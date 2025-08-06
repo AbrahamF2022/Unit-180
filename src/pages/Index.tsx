@@ -470,7 +470,7 @@ const Index = () => {
                         src="/images/Emmanuel Smith.jpg" 
                         alt="Emanuel Smith Jr" 
                         className="w-full h-full object-cover object-center"
-                        style={{ objectPosition: 'center -25%' }}
+                        style={{ objectPosition: 'center 1%' }}
                       />
                     </div>
                     
@@ -505,7 +505,7 @@ const Index = () => {
                         src="/images/Emmanuel Smith.jpg" 
                         alt="Emanuel A. Smith Jr" 
                         className="w-full h-full object-cover object-center"
-                        style={{ objectPosition: 'center -25%' }}
+                        style={{ objectPosition: 'center 1%' }}
                       />
                     </div>
                     
