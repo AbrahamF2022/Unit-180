@@ -28,7 +28,7 @@ const Donate = () => {
   // Load PayPal SDK
   useEffect(() => {
     // Use environment variable or fallback to hardcoded value for production
-    const paypalClientId = import.meta.env.VITE_PAYPAL_CLIENT_ID || 'AUH9uC6zu54hil2NwdgE9hrVHF9ThIImfaQ1tUFfNlYpJDdcC43smUU-rPt-_XU_O6IUsPmqfqHK8BW3';
+    const paypalClientId = import.meta.env.VITE_PAYPAL_CLIENT_ID || 'AeJRyTF3v9ekcdK0wIKyKWCvLjo1TkKzKXQpGGBrVCY6LSF1u0TSPVTrdLmgB9YJh3pmvX5Iw-PfjN8a';
     
     console.log('PayPal Client ID:', paypalClientId ? 'Found' : 'Missing');
     
