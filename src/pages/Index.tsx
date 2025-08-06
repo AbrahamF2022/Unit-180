@@ -467,7 +467,7 @@ const Index = () => {
                     {/* Emmanuel Smith Image */}
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group-hover:border-green-300/50 transition-all duration-500 group-hover:scale-110">
                       <img 
-                        src="images/Emmanuel Smith.jpg" 
+                        src="/images/Emmanuel Smith.jpg" 
                         alt="Emmanuel Smith Jr" 
                         className="w-full h-full object-cover object-center"
                         style={{ objectPosition: 'center -10%' }}
@@ -502,7 +502,7 @@ const Index = () => {
                     {/* Emmanuel Smith Image */}
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group-hover:border-green-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-6">
                       <img 
-                        src="images/Emmanuel Smith.jpg" 
+                        src="/images/Emmanuel Smith.jpg" 
                         alt="Emmanuel A Smith Jr" 
                         className="w-full h-full object-cover object-center"
                         style={{ objectPosition: 'center -10%' }}
@@ -529,7 +529,7 @@ const Index = () => {
                     {/* Ramiri Image */}
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group-hover:border-emerald-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-6">
                       <img 
-                        src="images/Ramiri inside final.jpg" 
+                        src="/images/Ramiri inside final.jpg" 
                         alt="Ramiri" 
                         className="w-full h-full object-cover"
                       />
@@ -555,7 +555,7 @@ const Index = () => {
                     {/* Theresa Image */}
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group-hover:border-teal-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-6">
                       <img 
-                        src="images/theresa inside.jpg" 
+                        src="/images/theresa inside.jpg" 
                         alt="Dr. Theresa J. Smith" 
                         className="w-full h-full object-cover"
                       />
@@ -581,7 +581,7 @@ const Index = () => {
                     {/* Alexis Image */}
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group-hover:border-cyan-300/50 transition-all duration-500 group-hover:scale-110 mx-auto mb-6">
                       <img 
-                        src="images/alexis inside final.jpg" 
+                        src="/images/alexis inside final.jpg" 
                         alt="Alexis Y. Hardy" 
                         className="w-full h-full object-cover"
                       />
