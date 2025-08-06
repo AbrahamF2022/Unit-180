@@ -292,6 +292,52 @@ const Donate = () => {
                         <span>PayPal</span>
                       </div>
                     </div>
+
+                    {/* Cash App Section */}
+                    <div className="mt-8 pt-6 border-t border-green-100">
+                      <div className="text-center mb-6">
+                        <div className="flex items-center justify-center mb-3">
+                          <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                            <span className="text-white font-bold text-sm">$</span>
+                          </div>
+                          <h3 className="text-xl font-bold text-green-700">Cash App</h3>
+                        </div>
+                        <p className="text-sm text-gray-600">Quick and easy mobile payment option</p>
+                      </div>
+                      
+                      <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]">
+                        <div className="text-center mb-6">
+                          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full shadow-lg mb-4">
+                            <span className="text-white font-bold text-2xl">$</span>
+                          </div>
+                          <div className="space-y-2">
+                            <div className="text-3xl font-black text-green-700 tracking-wide">$Unit180</div>
+                            <div className="text-sm text-gray-600 font-medium">Cash App Username</div>
+                          </div>
+                        </div>
+                        
+                        <div className="text-center">
+                          <a
+                            href="https://cash.app/$Unit180"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                          >
+                            <span className="mr-3 text-xl">💚</span>
+                            <span>Send via Cash App</span>
+                            <span className="ml-3 text-sm opacity-80 group-hover:opacity-100">→</span>
+                          </a>
+                        </div>
+                        
+                        <div className="mt-4 text-center">
+                          <div className="flex items-center justify-center space-x-2 text-xs text-gray-500">
+                            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                            <span>Opens Cash App in a new window</span>
+                            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Security Note */}
