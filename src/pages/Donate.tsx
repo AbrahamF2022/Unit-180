@@ -15,6 +15,7 @@ const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(250);
   const [customAmount, setCustomAmount] = useState('');
   const [paypalLoaded, setPaypalLoaded] = useState(false);
+  const [paypalError, setPaypalError] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
   const predefinedAmounts = [100, 250, 500, 1000];
@@ -28,15 +29,27 @@ const Donate = () => {
   useEffect(() => {
     const paypalClientId = import.meta.env.VITE_PAYPAL_CLIENT_ID;
     
+    console.log('PayPal Client ID:', paypalClientId ? 'Found' : 'Missing');
+    
     if (!paypalClientId) {
       console.error('PayPal Client ID not found in environment variables');
+      setPaypalError('PayPal configuration error');
       return;
     }
 
+    console.log('Loading PayPal SDK...');
     const script = document.createElement('script');
     script.src = `https://www.paypal.com/sdk/js?client-id=${paypalClientId}&currency=USD&intent=capture`;
     script.async = true;
-    script.onload = () => setPaypalLoaded(true);
+    script.onload = () => {
+      console.log('PayPal SDK loaded successfully');
+      setPaypalLoaded(true);
+      setPaypalError(null);
+    };
+    script.onerror = () => {
+      console.error('Failed to load PayPal SDK');
+      setPaypalError('Failed to load payment system');
+    };
     document.body.appendChild(script);
 
     return () => {
@@ -49,12 +62,17 @@ const Donate = () => {
 
   // Render PayPal button when SDK is loaded and amount is selected
   useEffect(() => {
+    console.log('PayPal render effect - paypalLoaded:', paypalLoaded, 'amount:', getCurrentAmount(), 'window.paypal:', !!window.paypal);
+    
     if (paypalLoaded && getCurrentAmount() > 0 && window.paypal) {
       // Clear existing buttons
       const container = document.getElementById('paypal-button-container');
+      console.log('PayPal container found:', !!container);
+      
       if (container) {
         container.innerHTML = '';
         
+        console.log('Rendering PayPal button...');
         window.paypal.Buttons({
           createOrder: function(data: any, actions: any) {
             const amount = getCurrentAmount();
@@ -257,12 +275,18 @@ const Donate = () => {
                   
                   {/* PayPal Buttons */}
                   <div className="space-y-4">
-                    {paypalLoaded && getCurrentAmount() > 0 && (
+                    {paypalLoaded && getCurrentAmount() > 0 && !paypalError && (
                       <div className="w-full">
                         <div
                           id="paypal-button-container"
                           className="w-full"
                         />
+                      </div>
+                    )}
+                    
+                    {paypalError && (
+                      <div className="w-full bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+                        <span className="text-red-600">PayPal Error: {paypalError}</span>
                       </div>
                     )}
                     
@@ -276,6 +300,19 @@ const Donate = () => {
                     {getCurrentAmount() === 0 && (
                       <div className="w-full bg-gray-100 rounded-lg p-4 text-center">
                         <span className="text-gray-600">Please select an amount to donate</span>
+                      </div>
+                    )}
+                    
+                    {/* PayPal Error Display */}
+                    {paypalError && (
+                      <div className="w-full bg-red-50 border-2 border-red-200 rounded-lg p-4 text-center">
+                        <div className="flex items-center justify-center space-x-2 text-red-700">
+                          <span className="text-red-500">⚠️</span>
+                          <span className="font-medium">{paypalError}</span>
+                        </div>
+                        <p className="text-sm text-red-600 mt-2">
+                          Please try refreshing the page or contact support if the issue persists.
+                        </p>
                       </div>
                     )}
                     
