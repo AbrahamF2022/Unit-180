@@ -437,7 +437,7 @@ const Index = () => {
                       : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  Our Founders/Visionary
+                  Our Founder/Visionary
                 </button>
                 <button
                   onClick={() => setActiveTab('board')}
@@ -470,7 +470,7 @@ const Index = () => {
                         src="/images/Emmanuel Smith.jpg" 
                         alt="Emanuel Smith Jr" 
                         className="w-full h-full object-cover object-center"
-                        style={{ objectPosition: 'center -10%' }}
+                        style={{ objectPosition: 'center -5%' }}
                       />
                     </div>
                     
@@ -505,7 +505,7 @@ const Index = () => {
                         src="/images/Emmanuel Smith.jpg" 
                         alt="Emanuel A Smith Jr" 
                         className="w-full h-full object-cover object-center"
-                        style={{ objectPosition: 'center -10%' }}
+                        style={{ objectPosition: 'center -5%' }}
                       />
                     </div>
                     
