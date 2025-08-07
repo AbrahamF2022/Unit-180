@@ -74,31 +74,35 @@ const Footer = () => {
               <h3 className="text-xl font-bold text-green-400 mb-8">Contact Us</h3>
               <div className="space-y-6">
                 <div className="flex items-start justify-center lg:justify-start space-x-4 group">
-                  <div className="p-3 bg-green-500/20 rounded-full group-hover:bg-green-500/30 transition-colors duration-300 flex-shrink-0">
+                  <div className="w-12 h-12 p-3 bg-green-500/20 rounded-full group-hover:bg-green-500/30 transition-colors duration-300 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-green-400" />
                   </div>
-                  <div className="text-gray-300">
+                  <div className="text-gray-300 text-center lg:text-left flex-1">
                     <p className="font-semibold text-lg mb-1">Unit 180 Headquarters</p>
                     <p className="text-base">2501 Chatham Rd. Suite 5418<br />Sringfield, IL 627049</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center justify-center lg:justify-start space-x-4 group">
-                  <div className="p-3 bg-green-500/20 rounded-full group-hover:bg-green-500/30 transition-colors duration-300 flex-shrink-0">
+                <div className="flex items-start justify-center lg:justify-start space-x-4 group">
+                  <div className="w-12 h-12 p-3 bg-green-500/20 rounded-full group-hover:bg-green-500/30 transition-colors duration-300 flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6 text-green-400" />
                   </div>
-                  <a href="tel:+1-555-UNIT-180" className="text-gray-300 hover:text-green-400 transition-colors duration-300 text-lg font-medium">
-                   (312) 488-9668
-                  </a>
+                  <div className="text-gray-300 text-center lg:text-left flex-1">
+                    <a href="tel:+13124889668" className="text-gray-300 hover:text-green-400 transition-colors duration-300 text-lg font-medium">
+                     (312) 488-9668
+                    </a>
+                  </div>
                 </div>
                 
-                <div className="flex items-center justify-center lg:justify-start space-x-4 group">
-                  <div className="p-3 bg-green-500/20 rounded-full group-hover:bg-green-500/30 transition-colors duration-300 flex-shrink-0">
+                <div className="flex items-start justify-center lg:justify-start space-x-4 group">
+                  <div className="w-12 h-12 p-3 bg-green-500/20 rounded-full group-hover:bg-green-500/30 transition-colors duration-300 flex items-center justify-center flex-shrink-0">
                     <Instagram className="w-6 h-6 text-green-400" />
                   </div>
-                  <a href="https://instagram.com/unit180mentoring" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-green-400 transition-colors duration-300 text-lg font-medium">
-                    @unit180mentoring
-                  </a>
+                  <div className="text-gray-300 text-center lg:text-left flex-1">
+                    <a href="https://instagram.com/unit180mentoring" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-green-400 transition-colors duration-300 text-lg font-medium">
+                      @unit180mentoring
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
