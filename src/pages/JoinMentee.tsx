@@ -337,6 +337,7 @@ const JoinMentee = () => {
                             <option value="10">10th Grade</option>
                             <option value="11">11th Grade</option>
                             <option value="12">12th Grade</option>
+                            <option value="graduated">Graduated</option>
                           </select>
                         </div>
                       </div>

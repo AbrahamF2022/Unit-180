@@ -79,7 +79,7 @@ const Footer = () => {
                   </div>
                   <div className="text-gray-300 text-center lg:text-left flex-1">
                     <p className="font-semibold text-lg mb-1">Unit 180 Headquarters</p>
-                    <p className="text-base">2501 Chatham Rd. Suite 5418<br />Sringfield, IL 627049</p>
+                    <p className="text-base">2501 Chatham Rd. Suite 5418<br />Springfield, IL 627049</p>
                   </div>
                 </div>
                 
