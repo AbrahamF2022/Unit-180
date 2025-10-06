@@ -94,7 +94,19 @@ const Donate = () => {
           onApprove: function(data: any, actions: any) {
             return actions.order.capture().then(function(details: any) {
               setIsProcessing(false);
-              alert('Thank you for your donation! Transaction completed by ' + details.payer.name.given_name);
+
+              // Trigger thank-you email via Apps Script
+              const donorEmail = (details && details.payer && details.payer.email_address) ? details.payer.email_address : '';
+              const donorGiven = (details && details.payer && details.payer.name && details.payer.name.given_name) ? details.payer.name.given_name : '';
+              const donorSurname = (details && details.payer && details.payer.name && details.payer.name.surname) ? details.payer.name.surname : '';
+              const donorName = `${donorGiven} ${donorSurname}`.trim();
+              const unit = details && details.purchase_units && details.purchase_units[0];
+              const paidAmount = unit && unit.amount && unit.amount.value ? unit.amount.value : getCurrentAmount().toString();
+              const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwGX9iv85sPFxBnCwRl2Ms0-jjvMPtQno_KyR3ESq6iIcgZ7XSD-9NvybhHptpDu354/exec';
+              const params = new URLSearchParams({ type: 'donation', email: donorEmail, name: donorName, amount: paidAmount });
+              fetch(`${GOOGLE_SCRIPT_URL}?${params.toString()}`).catch(() => {});
+
+              alert('Thank you for your donation! Transaction completed by ' + (donorGiven || 'Supporter'));
               // Reset form
               setSelectedAmount(250);
               setCustomAmount('');

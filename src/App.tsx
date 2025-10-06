@@ -11,7 +11,6 @@ import BecomeMentor from "./pages/BecomeMentor";
 import Testimonials from "./pages/Testimonials";
 import NotFound from "./pages/NotFound";
 import Gallery from "./pages/Gallery";
-import ApplicationsPopup from "./components/ApplicationsPopup";
 
 const queryClient = new QueryClient();
 
@@ -21,7 +20,6 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <ApplicationsPopup />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/donate" element={<Donate />} />
