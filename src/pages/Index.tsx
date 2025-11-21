@@ -422,7 +422,7 @@ const Index = () => {
               Our Leadership
             </h3>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8 animate-fade-in-up delay-200">
-              Meet the visionary founders and dedicated board members who drive our mission forward
+              Meet the visionary founder and dedicated board members who drive our mission forward
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-emerald-500 mx-auto rounded-full animate-fade-in-up delay-400" />
           </div>
@@ -564,7 +564,7 @@ const Index = () => {
                     </div>
                     
                     <h4 className="text-xl md:text-3xl font-bold text-white mb-3 group-hover:text-teal-300 transition-colors duration-300">
-                      Dr. Theresa J. Smith
+                      Dr. Theresa J. Massey
                     </h4>
                     <p className="text-base md:text-lg text-teal-300 font-medium mb-4">
                       Board Member
